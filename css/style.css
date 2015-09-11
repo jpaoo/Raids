@@ -3,9 +3,13 @@
 }
 
 
+#topmenu {
+  background-color: #E8E8E3;
+}
 
 #avientame_titulo {
   margin-left: 5%;
+
 }
 
 #btn_login {
@@ -17,7 +21,7 @@
 
 #btn_register {
   margin: 10%;
-  background-color: black;
+  background-color: green;
   border: 4px solid #0F6D99;
 }
 
@@ -28,4 +32,16 @@
 
 .text-justify {
   margin: 5%;
+}
+
+#myCarousel {
+  border: 10px solid #0F6D99;
+}
+
+.nada {
+  background-color: #0F6D99;
+}
+
+#footer {
+  background-color: #E8E8E3;
 }
