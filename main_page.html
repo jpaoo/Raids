@@ -18,6 +18,10 @@
 			height: 10em;
 			width: 18em; 
 		}
+		#map3 { 
+			height: 10em;
+			width: 18em; 
+		}
 	</style>
 
 </head>
@@ -60,9 +64,9 @@
 	<div class="span12 centered-pills">
 		<h1 class="text-center">VIAJES</h1>
 		<ul class="nav nav-pills ">
-			<li role="presentation" class="active" id="nav-Pills-active"><a href="#">EN CURSO</a></li>
-			<li role="presentation"><a href="#">TOMADOS</a></li>
-			<li role="presentation"><a href="#">OFRECIDOS</a></li>
+			<li role="presentation" class="active nav-Pills-active" id="btnencurso"><a href="#">EN CURSO</a></li>
+			<li role="presentation" id="btntomados"><a href="#">TOMADOS</a></li>
+			<li role="presentation" id="btnofrecidos"><a href="#">OFRECIDOS</a></li>
 		</ul>
 	</div>
 </div>
@@ -70,7 +74,7 @@
 
 <!--LISTA EN CURSO-->
 
-<div class="col-xs-8 col-sm-8 col-md-8">
+<div class="col-xs-8 col-sm-8 col-md-8" id="encurso">
 	<table class="table table-hover ">
 		<tr>
 			<th>FECHA</th>
@@ -91,7 +95,7 @@
 		<tr>
 			<td colspan="2">
 				<h4>RUTA</h4>
-				<div id="map2"></div>
+				<div id="map3"></div>
 			</td>
 			<td colspan="2">
 				<h4 class="text-center">COSTO: $0</h4></br>
@@ -115,7 +119,7 @@
 
 <!--LISTA TOMADOS-->
 
-<div class="col-xs-8 col-sm-8 col-md-8">
+<div class="col-xs-8 col-sm-8 col-md-8" id="tomados">
 	<table class="table table-hover report">
 		<tr>
 			<th>FECHA</th>
@@ -244,49 +248,22 @@
 
 <!--LISTA OFRECIDOS-->
 
-<div class="col-xs-8 col-sm-8 col-md-8">
+<div class="col-xs-8 col-sm-8 col-md-8" id="ofrecidos">
 	<table class="table table-hover report" >
 		<tr>
 			<th>FECHA</th>
-			<th>CONDUCTOR</th>
+			<th>COPILOTO</th>
 			<th>ORIGEN</th>
 			<th>DESTINO</th>
 			<th>HORA</th>
 
 		</tr>
-		<tr>
-			<td>10/09/2015</td>
-			<td>Fernando Baba</td>
-			<td>Los Girasoles</td>
-			<td>Tec de Monterrey</td>
-			<td>19:24</td>
+		<tr></tr>
 
-		</tr>
-		<tr>
-			<td colspan="2">
-				<h4>RUTA</h4>
-				<div id="map"></div>
-			</td>
-			<td colspan="2">
-				<h4 class="text-center">COSTO: $0</h4></br>
-		<p class="text-center">19:24 - Ponciano Arriaga 403A</p>
-		<p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
-
-		</td>
-	<td class="text-center">
-		<h4>CALIFICACIÓN</h4></br>
-<div  class="stars"></div></br>
-<button  class="btn-info btnStarsEnviar">Enviar</button>
-
-</td>
-<td>
-
-</td>
-</tr>
 <tr>
 	<td>02/09/2015</td>
-	<td>Fernando Baba</td>
-	<td>Los Girasoles</td>
+	<td>Fernando Bobo</td>
+	<td>Oli</td>
 	<td>Tec de Monterrey</td>
 	<td>07:04</td>
 </tr>
@@ -414,6 +391,42 @@
 
 <script>
 	$('.stars').raty();
+</script>
+
+
+<script>
+
+	$( "#encurso" ).show();
+	$( "#tomados" ).hide();
+	$( "#ofrecidos" ).hide();
+
+	$( "#btnencurso" ).click(function() {
+		$( "#encurso" ).show();
+		$( "#tomados" ).hide();
+		$( "#ofrecidos" ).hide();
+		$("#btnofrecidos").removeClass("active nav-Pills-active");
+		$("#btntomados").removeClass("active nav-Pills-active");
+		$("#btnencurso").addClass("active nav-Pills-active");
+	});
+
+	$( "#btntomados" ).click(function() {
+		$( "#tomados" ).show();
+		$( "#encurso" ).hide();
+		$( "#ofrecidos" ).hide();
+		$("#btnofrecidos").removeClass("active nav-Pills-active");
+		$("#btntomados").addClass("active nav-Pills-active");
+		$("#btnencurso").removeClass("active nav-Pills-active");
+	});
+
+	$( "#btnofrecidos" ).click(function() {
+		$( "#ofrecidos" ).show();
+		$( "#tomados" ).hide();
+		$( "#encurso" ).hide();
+		$("#btnofrecidos").addClass("active nav-Pills-active");
+		$("#btntomados").removeClass("active nav-Pills-active");
+		$("#btnencurso").removeClass("active nav-Pills-active");
+		
+	});
 </script>
 
 </body>
