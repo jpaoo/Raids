@@ -11,6 +11,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="css/bootstrap-social.css">
 
 
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -38,26 +39,27 @@
 
 
     <li role = "separator" class="divider"></li>
-    <li><a href="#">¿Que es?</a></li>
+    <li><a href="#quehacemos">¿Que es?</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">¿Cómo funciona?</a></li>
+    <li><a href="#funciona">¿Cómo funciona?</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Siguenos</a></li>
-    <li role="separator" class="divider"></li>
-    <li> <div class="form-group">
+    <!-- <li><a href="#mark">Siguenos</a></li> -->
+    <!-- <li role="separator" class="divider"></li> -->
+    <!-- <li> <div class="form-group">
   <label for="sel1" class="text-center">Idioma</label>
   <select class="form-control" id="sel1">
       <option>Español</option>
       <option>Ingles</option>
     </select>
-    </div></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Ayuda</a></li>
+    </div></li> -->
+    <!-- <li role="separator" class="divider"></li>
+    <li><a href="#">Ayuda</a></li> -->
   </ul>
         </button>
       </div>
       <div class="col-xs-10 col-sm-8 col-md-8">
-        <img src="images/titulo.png" class="text-center" id="titulo"/>
+        <a href="index.html">
+        <img src="images/titulo.png" class="text-center" id="titulo"/></a>
         <!-- <h1 class="text-center" id="avientame_titulo">Avientame</h1> -->
       </div>
       <ul class="nav nav-pills">
@@ -93,20 +95,32 @@
           <img src="images/estudiantes1.jpg">
           <div class="carousel-caption">
        <h2>¿Qué es Avientame?</h2>
-       <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+       <p>Aviéntame es una aplicación web diseñada para mejorar la experiencia de transporte hogar-campus con el fin de resolver...<a href="#quehacemos">seguir leyendo</a> </p>
      </div>
         </div>
 
         <div class="item">
           <img src="images/estudiantes2.jpg">
+          <div class="carousel-caption">
+       <h2>¿Cómo funciona?</h2>
+       <p>Aviéntame cuenta con un sistema de registro dependiendo si quieres ser solamente...<a href="#funciona">seguir leyendo</a></p>
+     </div>
         </div>
 
         <div class="item">
           <img src="images/estudiantes3.jpg">
+          <div class="carousel-caption">
+       <h2>Prueba la app</h2>
+       <p>Prueba nuestra app, su uso es totalmente gratuito! Registrate <a href="registra.html">aquí.</a></p>
+     </div>
         </div>
 
         <div class="item">
           <img src="images/estudiantes4.jpg">
+          <div class="carousel-caption">
+       <h2>Siguenos</h2>
+       <p>Siguenos en <a href="#matk">nuestas</a> redes sociales para mantenerte informado. </p>
+     </div>
         </div>
       </div>
 
@@ -126,43 +140,54 @@
     <p style="padding: 2.5%;">
 
     </p>
+
+    <div class="container" id="quehacemos">
     <div class="jumbotron">
-      <h1 class="text-center">Que hacemos</h1>
+      <h1 class="text-center">¿Qué es Avientame?</h1>
       <p class="text-justify">
-        Aqui damos como la vision o mision de la app
+    Aviéntame es una aplicación web diseñada para mejorar la experiencia de transporte hogar-campus con el fin de resolver el problema de disponibilidad de estacionamiento, proporcionar una red para conocer a nuevas personas, ayudar la economía de los alumnos y al medio ambiente.
       </p>
+    </div>
     </div>
 
     <p style="padding: 2.5%;">
 
     </p>
+    <div class="container" id="funciona">
       <div class="jumbotron">
         <h1 class="text-center">Como funciona</h1>
         <p class="text-justify">
-          aqui decimos como funciona la aplicacion en una breve descripcion
+          Aviéntame cuenta con un sistema de registro dependiendo si quieres ser solamente un pasajero y buscar aventones o si tienes automóvil llegar a ser chofer y ofrecerlos a tus compañeros del campus por la cuota que tu desees definir.
         </p>
       </div>
+        </div>
 
       <p style="padding: 2.5%;">
 
       </p>
 
+      <div class="container" id="prueba">
       <div class="jumbotron">
-        <h1 class="text-center">prueba la app</h1>
+        <h1 class="text-center">Prueba la app!!</h1>
         <p class="text-justify">
-          ponemos un boton o algo que diga registarse o una madre asi y que te mande a la pagina de registarse.
+          Prueba nuestra app, su uso es totalmente gratuito! Podras conocer nuevas personas y ayudaras al medio ambiente.
+
+          Puedes registrarte <a href="register.html">aquí</a> o en el botón de Registro en la barra superior.
         </p>
+      </div>
       </div>
 
       <p style="padding: 2.5%;">
 
       </p>
 
-      <div class="container">
+      <div class="container" id="mark">
         <div class="jumbotron">
           <h1 class="text-center">Marketing</h1>
           <p class="text-justify">
-            Aqui ponemos lo de las redes sociales, el repositorio de github, un boton de paypal para que nos donen :D
+            <a class="btn btn-social-icon btn-twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
           </p>
         </div>
       </div>
@@ -180,7 +205,7 @@
 
         <!-- </div>
       </div> -->
-      
+
       <p class="text-right">
         Timano, Copyright © 2015.
       </p>

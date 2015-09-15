@@ -72,3 +72,9 @@ body {
 .centered-pills ul.nav-pills { display:inline-block; }
 .centered-pills li { display:inline; }
 .centered-pills a { float:left; }
+
+@media (max-width:40px) {
+                        .carousel {
+                        width: 80%;
+                        }
+                        } instruction
