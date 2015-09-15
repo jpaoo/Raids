@@ -28,7 +28,7 @@
   </head>
 
 <!-- navbar inicio -->
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #343838; height: 5.5em;">
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-2 col-sm-8 col-md-2 btn-group">
@@ -37,23 +37,46 @@
           <!-- Menu<span class="caret"></span> -->
   </button>
   <ul class="dropdown-menu">
+
     <li><a href="#"><button type="button" class="btn btn-default navbar-btn" id="btn_login"> Log In</button></a></li>
-    <li><a href="#"><button type="button" class="btn btn-primary navbar-btn" id="btn_register">Register</button></a></li>
-    <li><a href="#">Something else </a></li>
+      <li><a href="#"><button type="button" class="btn btn-primary navbar-btn" id="btn_register">Register</button></a></li>
+
+
+    <li role = "separator" class="divider"></li>
+    <li><a href="#">¿Que es?</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">¿Cómo funciona?</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Siguenos</a></li>
+    <li role="separator" class="divider"></li>
+    <li> <div class="form-group">
+  <label for="sel1" class="text-center">Idioma</label>
+  <select class="form-control" id="sel1">
+      <option>Español</option>
+      <option>Ingles</option>
+      <option>Frances</option>
+    </select>
+    </div></li>
     <li role="separator" class="divider"></li>
     <li><a href="#">Ayuda</a></li>
   </ul>
         </button>
       </div>
       <div class="col-xs-10 col-sm-8 col-md-8">
-        <h1 class="text-center" id="avientame_titulo">Avientame</h1>
+        <img src="images/titulo.png" class="text-center" id="titulo"/>
+        <!-- <h1 class="text-center" id="avientame_titulo">Avientame</h1> -->
       </div>
+      <ul class="nav nav-pills">
+        <li role="presentation" id="login"><a href="#">Login</a></li>
+        <li role="presentation" id="register"><a href="#">Registrate</a></li>
+      </ul>
+      <!--
       <div class="col-xs-3  col-sm-2 col-md-1">
           <button type="button" class="btn btn-default navbar-btn hidden-xs" id="btn_login">Log In</button>
       </div>
       <div class="col-xs-3 col-sm-2 col-md-1">
           <button type="button" class="btn btn-primary navbar-btn hidden-xs" id="btn_register">Registrar</button>
-      </div>
+      </div>-->
     </div>
   </div>
 </nav>
@@ -152,26 +175,20 @@
 
 
 
-<!-- <script type="text/javascript">
-$(document).ready(function() {
-  $('navbar navbar-default navbar-fixed-top').autoHidingNavbar();
-  console.log("sdfasdf");
-})
 
-</script>
-<script src="dist/jquery.bootstrap-autohidingnavbar.min.js"></script> -->
   </body>
   <footer id="footer">
 
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
-        <div class="col-md-">
+        <div class="col-md-2"><a href="#">Home</a></div>
+        <div class="col-md-2"><a href="#"></a> -->
 
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
       <p class="text-right">
         Timano, Copyright © 2015.
       </p>
-    </div>
+    <!-- </div> -->
   </footer>
 </html>

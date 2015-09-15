@@ -10,10 +10,9 @@ body {
   background-color: #E8E8E3;
 }
 
-#avientame_titulo {
-  /*margin-left: 5;*/
+#titulo {
   text-align: center;
-  margin-top: 2%;
+  width: 15em;
 
 }
 
@@ -25,17 +24,25 @@ body {
   background-color: white;
   color: black;
   border: 0px;
-  /*margin-right: 10px;*/
+  display: inline;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 #btn_register {
   background-color: green;
   border: 4px solid #0F6D99;
   color: solid  white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .jumbotron {
-  background-color: #0F6D99;
+  background-color: #343838;
   color: white;
 }
 
@@ -44,7 +51,7 @@ body {
 }
 
 #myCarousel {
-  border: 10px solid #0F6D99;
+  border: 10px solid white;
 }
 
 .nada {
@@ -61,6 +68,7 @@ body {
   font-size: 125%;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
