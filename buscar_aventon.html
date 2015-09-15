@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buscar aventón</title>
+    <title>Main Page</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom_css_main_page.css" rel="stylesheet">
@@ -31,13 +31,19 @@
 
 
         <div class="list-group">
+<<<<<<< HEAD
             <a href="profile.html"class="list-group-item">Mi Perfil </a>
             <a href="main_page.html" class="list-group-item">
+=======
+            <a href="#" class="list-group-item">Mi Perfil </a>
+            <a href="#" class="list-group-item">
+>>>>>>> 812b65b1c9761a90c31fcd4efda3f7b4c1e5bb27
 			Mis viajes
 		</a>
-            <a href="buscar_aventon.html" class="list-group-item active" id="selected-main">Buscar Aventón</a>
-            <a href="misautos.html" class="list-group-item">Mis autos</a>
+            <a href="#" class="list-group-item active" id="selected-main">Buscar Aventón</a>
+            <a href="#" class="list-group-item">Mis autos</a>
             <a href="#" class="list-group-item">Log out</a>
+            <a href="#" class="list-group-item">Ayuda</a>
         </div>
     </div>
 
@@ -81,7 +87,6 @@
                     <br>
                     <br>
                 </fieldset>
-
             </td>
         </tr>
     </table>
@@ -90,8 +95,8 @@
     <!--Google Maps-->
     <style type="text/css">
         #map {
-            height: 20em;
-            width: 45em;
+            height: 10em;
+            width: 25em;
         }
 
     </style>
@@ -117,12 +122,140 @@
     </script>
     <br>
     <br>
-    <button type="submit" class="btn btn-default">Buscar</button>
+    <button type="submit" class="btn btn-primary">Buscar</button>
 <br><br>
- <table class="table-hover col-xs-8 col-sm-8 col-md-8">
-        <th class="text-center">RIDES DISPONIBLES</th>
 
-    </table>
+
+    <div class="col-xs-8 col-sm-8 col-md-8" id="tomados">
+        <table class="table table-hover report">
+            <tr>
+                <th>FECHA</th>
+                <th>CONDUCTOR</th>
+                <th>ORIGEN</th>
+                <th>DESTINO</th>
+                <th>HORA</th>
+
+            </tr>
+            <tr>
+                <td>10/09/2015</td>
+                <td>Fernando Baba</td>
+                <td>Los Girasoles</td>
+                <td>Tec de Monterrey</td>
+                <td>19:24</td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4>RUTA</h4>
+                    <div id="map"></div>
+                </td>
+                <td colspan="2">
+                    <h4 class="text-center">COSTO: $0</h4></br>
+                    <p class="text-center">19:24 - Ponciano Arriaga 403A</p>
+                    <p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
+
+                </td>
+                <td class="text-center">
+                    <h4>CALIFICACIÓN</h4></br>
+                    <div class="stars"></div>
+                    </br>
+                    <button class="btn-info btnStarsEnviar">Solicitar aventón</button>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>02/09/2015</td>
+                <td>Fernando Baba</td>
+                <td>Los Girasoles</td>
+                <td>Tec de Monterrey</td>
+                <td>07:04</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4>RUTA</h4>
+                    <div id="map"></div>
+                </td>
+                <td colspan="2">
+                    <h4 class="text-center">COSTO: $0</h4></br>
+                    <p class="text-center">19:24 - Ponciano Arriaga 403A</p>
+                    <p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
+
+                </td>
+                <td class="text-center">
+                    <h4>CALIFICACIÓN</h4></br>
+                    <div class="stars"></div>
+                    </br>
+                    <button class="btn-info btnStarsEnviar">Solicitar aventón</button>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>25/08/2015</td>
+                <td>Fernando Baba</td>
+                <td>Los Girasoles</td>
+                <td>Tec de Monterrey</td>
+                <td>11:03</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4>RUTA</h4>
+                    <div id="map"></div>
+                </td>
+                <td colspan="2">
+                    <h4 class="text-center">COSTO: $0</h4></br>
+                    <p class="text-center">19:24 - Ponciano Arriaga 403A</p>
+                    <p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
+
+                </td>
+                <td class="text-center">
+                    <h4>CALIFICACIÓN</h4></br>
+                    <div class="stars"></div>
+                    </br>
+                    <button class="btn-info btnStarsEnviar">Solicitar aventón</button>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>03/08/2015</td>
+                <td>Fernando Baba</td>
+                <td>Los Girasoles</td>
+                <td>Tec de Monterrey</td>
+                <td>20:23</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4>RUTA</h4>
+                    <div id="map"></div>
+                </td>
+                <td colspan="2">
+                    <h4 class="text-center">COSTO: $0</h4></br>
+                    <p class="text-center">19:24 - Ponciano Arriaga 403A</p>
+                    <p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
+
+                </td>
+                <td class="text-center">
+                    <h4>CALIFICACIÓN</h4></br>
+                    <div class="stars"></div>
+                    </br>
+                    <button class="btn-info btnStarsEnviar">Solicitar aventón</button>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
