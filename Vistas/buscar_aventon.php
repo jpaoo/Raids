@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Main Page</title>
+	<title>Buscar Aventon</title>
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
@@ -12,33 +12,8 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="index.html"><img alt="Avientame" src="images/AvientameIcon.png" id="pageIcon"> </a>
-			</li>
-		</ul>
-
-		</a>
-	</nav>
-
-
-	<div class="text-center col-xs-4 col-sm-3 col-md-3">
-		<div class="avatarcontainer">
-			<img id="avatar" src="images/Dummy1.jpg" alt="Avatar" class="img-thumbnail ">
-
-		</div>
-
-
-		<div class="list-group">
-			<a href="main_page.html" class="list-group-item">
-				<a href="profile.html" class="list-group-item">Mi Perfil </a>
-				<a href="main_page.html" class="list-group-item">Mis viajes	</a>
-				<a href="buscar_aventon.html" class="list-group-item active" id="selected-main">Buscar Aventón</a>
-				<a href="misautos.html" class="list-group-item">Mis autos</a>
-				<a href="login.html" class="list-group-item list-group-item-danger">Log out</a>
-		</div>
-	</div>
+	<?php include("templates.php"); ?>
+	<?php echo sideBar(); ?>
 
 
 

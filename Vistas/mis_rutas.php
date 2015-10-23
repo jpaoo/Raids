@@ -9,6 +9,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!--Custom CSS-->
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<!--Google Maps-->
 	<style type="text/css">
 		#map {
@@ -22,36 +23,9 @@
 
 <body>
 
-	<!--NAVBAR-->
-	<nav class="navbar navbar-inverse">
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="index.html"><img alt="Avientame" src="images/AvientameIcon.png" id="pageIcon"> </a>
-			</li>
-		</ul>
+	<?php include("templates.php"); ?>
+	<?php echo sideBar(); ?>
 
-		</a>
-	</nav>
-
-
-	<!--MENU LATERAL-->
-	<div class="text-center col-xs-4 col-sm-3 col-md-3">
-		<div class="avatarcontainer">
-			<img id="avatar" src="images/Dummy1.jpg" alt="Avatar" class="img-thumbnail ">
-
-		</div>
-
-
-		<div class="list-group">
-			<a href="profile.html" class="list-group-item">Mi Perfil </a>
-			<a href="main_page.html" class="list-group-item">
-			Mis viajes
-		</a>
-			<a href="buscar_aventon.html" class="list-group-item">Buscar Ride</a>
-			<a href="misautos.html" class="list-group-item active" id="selected-main">Mis autos</a>
-			<a href="#" class="list-group-item list-group-item-danger">Log out</a>
-		</div>
-	</div>
 
 	<div class="row col-xs-8 col-sm-8 col-md-8">
 		<h1 class="text-center">MIS RUTAS GUARDADAS</h1>
@@ -82,7 +56,7 @@
 	</div>
 
 	<div class="text-center col-xs-8 col-sm-8 col-md-8">
-		<button class="btn">Regresar a Mis Autos</button>
+		<a href="misautos.html"><button class="btn">Regresar a Mis Autos</button></a>
 	</div>
 
 	<!--JQUERY-->

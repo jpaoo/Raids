@@ -17,7 +17,7 @@
 			height: 10em;
 			width: 18em;
 		}
-		
+
 		#map2 {
 			height: 10em;
 			width: 18em;
@@ -27,35 +27,9 @@
 
 <body>
 
-	<!--NAVBAR-->
-	<nav class="navbar navbar-inverse">
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="index.html"><img alt="Avientame" src="images/AvientameIcon.png" id="pageIcon"> </a>
-			</li>
-		</ul>
+	<?php include("templates.php"); ?>
+	<?php echo sideBar(); ?>
 
-		</a>
-	</nav>
-
-
-	<!--MENU LATERAL-->
-	<div class="text-center col-xs-4 col-sm-3 col-md-3">
-		<div class="avatarcontainer">
-			<img id="avatar" src="images/Dummy1.jpg" alt="Avatar" class="img-thumbnail ">
-
-		</div>
-
-
-		<div class="list-group">
-			<a href="profile.html" class="list-group-item">Mi Perfil </a>
-			<a href="#" class="list-group-item">Mis viajes</a>
-			<a href="buscar_aventon.html" class="list-group-item">Buscar Ride</a>
-			<a href="misautos.html" class="list-group-item active" id="selected-main">Mis autos</a>
-			<a href="login.html" class="list-group-item list-group-item-danger">Log out</a>
-			<!-- <a href="#" class="list-group-item">Ayuda</a> -->
-		</div>
-	</div>
 
 
 	<!--MENU ARRIBA VIAJES-->
@@ -86,10 +60,12 @@
 					<a href="#"></a>Eliminar Auto</button>
 			</td>
 		</tr>
+	</table>
 
 
-		<button type="button" class="btn btn-success" href="registrarAuto.html"><a href="registrarAuto.html">Agregar Auto</a></button>
-	<button type="button" class="btn btn-success" href="registrarAuto.html"><a href="crear_modificar_ruta.html">Agregar Ruta</a></button>
+	<div class="col-md-2 col-md-offset-6" style="padding-top: 3%;">
+		<a href="registrarAuto.html"><button type="button" class="btn btn-success">Agregar Auto</button></a>
+	</div>
 		<!--JQUERY-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!--BOOSTRAP-->
