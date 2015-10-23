@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -15,7 +16,9 @@
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-arrow-left"> Regresar a la página de inicio</span></a>
+				<a class="navbar-brand" href="index.html">
+					<span class="glyphicon glyphicon-arrow-left"> Regresar a la página de inicio</span>
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right"></ul>
@@ -34,53 +37,77 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form>
+
+				<form method="POST" action="registro.php">
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="nombre">Nombre:</label>
-							<input type="text" class="form-control" id="nombre">
+							<label for="nombre">Nombre:
+								<span id="errname">
+									<?php echo $errNombre ?>
+								</span>
+							</label>
+							<input type="text" class="form-control" id="nombre" name="nombre" value=<?php if (isset($_POST[ "nombre"])) echo $_POST[ "nombre"] ?> >
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="apellido">Apellido:</label>
-							<input type="text" class="form-control" id="apellido">
+							<label for="apellido">Apellido:
+								<span id="errApellido">
+									<?php echo $errApellido ?>
+								</span>
+							</label>
+							<input type="text" class="form-control" id="apellido" name="apellido" value=<?php if (isset($_POST[ "apellido"])) echo $_POST[ "apellido"] ?> >
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="email">Correo electrónico:</label>
-						<input type="email" class="form-control" id="email" placeholder="Ej: A0123456@itesm.mx">
+						<label for="mail">Correo electrónico:
+							<span id="errMail">
+								<?php echo $errMail ?>
+							</span>
+						</label>
+						<input type="mail" class="form-control" id="mail" name="mail" placeholder="Ej: A0123456@itesm.mx" value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="pass">Contraseña:</label>
-							<input type="password" class="form-control" id="pass">
+							<label for="pass">Contraseña:
+								<span id="errCont1">
+									<?php echo $errCont1 ?>
+								</span>
+							</label>
+							<input type="password" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> >
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="pass2">Confirmar contraseña:</label>
-							<input type="password" class="form-control" id="pass2">
+							<label for="pass2">Confirmar contraseña:
+								<span id="errCont2">
+									<?php echo $errCont2 ?>
+								</span>
+							</label>
+							<input type="password" class="form-control" id="pass2" name="pass2" value=<?php if (isset($_POST[ "pass2"])) echo $_POST[ "pass2"] ?>>
 						</div>
+
 					</div>
 
 					<div class="checkbox">
 						<label>
-							<input type="checkbox">Acepto los términos y condiciones.</label>
+							<input type="checkbox" name="terminos">Acepto los términos y condiciones.
+							<span id="errTerm">
+								<?php echo $errTerm ?>
+							</span>
+						</label value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
 					</div>
-					<button type="submit" class="btn btn-success">Registrarme</button>
+					<button type="submit" name="submit" class="btn btn-success">Registrarme</button>
 				</form>
+
 			</div>
 		</div>
 	</div>
 
 
-
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
 
 </body>
 
