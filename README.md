@@ -1,3 +1,3 @@
 # Raids
 
-Project for "Desarrollo de Aplicaciones Web" couse from ITESM Campus Querétaro.
+Project for "Desarrollo de Aplicaciones Web" course from ITESM Campus Querétaro.
