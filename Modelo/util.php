@@ -30,7 +30,7 @@ function agregarUsuario($conn, $nombre, $apellido, $mail, $password)
 	if ($result->num_rows > 0) {
 		$errNombre = $errApellido = $errTerm = $errCont1 = $errCont2 = "";
 		$errMail = "Ya existe una cuenta asociada a este correo.";
-		include("register.html");
+		include("../Vistas/register.html");
 		return 0;
 	}
 	else
@@ -70,14 +70,14 @@ function login($mail, $pass)
 		}
 		else {
 			$errMail = "Correo electrónico o contraseña incorrectos.";
-			include("login.html");
+			include("../Vistas/login.html");
 		}
 		
 	}
 	else {
 		$errMail = "Correo electrónico no registrado";
 		$errPass = "";
-		include("login.html");
+		include("../Vistas/login.html");
 	}
 	$conn->close();
 }

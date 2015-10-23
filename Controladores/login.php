@@ -1,6 +1,6 @@
 <?php
 
-include_once("util.php");
+include_once("../Modelo/util.php");
 
 
 $errMail = "";
@@ -25,10 +25,10 @@ if($errors == 0)
 }
 else
 {
- include("login.html");
+ include("../Vistas/login.html");
 }
 }
 else {
-  include("login.html");
+  include("../Vistas/login.html");
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-include_once("util.php");
+include_once("../Modelo/util.php");
 
 function test_input($data) {
  $data = trim($data);
@@ -124,16 +124,16 @@ if($errors == 0)
 
   if(agregarUsuario($conn, $n, $a, $m, $p) == 1)
   {
-    include("login.html");
+    include("../Vistas/login.html");
   }
   disconnect($conn);
 }
 else {
-  include("register.html");
+  include("../Vistas/register.html");
 }
 }
 else {
-  include("register.html");
+  include("../Vistas/register.html");
 }
 
 ?>
