@@ -56,7 +56,7 @@
 	</div>
 
 	<div class="text-center col-xs-8 col-sm-8 col-md-8">
-		<a href="misautos.html"><button class="btn">Regresar a Mis Autos</button></a>
+		<a href="crear_modificar_ruta.php"><button class="btn">Nueva Ruta</button></a>
 	</div>
 
 	<!--JQUERY-->
