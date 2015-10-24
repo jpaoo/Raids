@@ -13,12 +13,11 @@
 	<?php include("templates.php"); ?>
 	<?php echo sideBar(); ?>
 
-
-
+	<?php include_once("../Modelo/util.php"); ?>
 
 
 	<div class="text-center col-xs-8 col-sm-9 col-md-9">
-		<h1>Juanita Pérez</h1>
+		<h1><?php session_start(); getname($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?></h1>
 		<hr>
 	</div>
 

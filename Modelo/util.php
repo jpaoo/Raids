@@ -66,7 +66,10 @@ function login($mail, $pass)
 			$sql = "SELECT nombre, apellido FROM usuarios WHERE mail='$mail'";
 			$result = $conn->query($sql);
 			$row = $result->fetch_assoc();
-			echo "Bienvenido " . $row["nombre"]. " " . $row["apellido"]. "<br>";
+			session_start();
+			$_SESSION['mail'] = $mail;
+			header("Location:../Vistas/mis_viajes.php");
+			exit;
 		}
 		else {
 			$errMail = "Correo electrónico o contraseña incorrectos.";
@@ -81,5 +84,52 @@ function login($mail, $pass)
 	}
 	$conn->close();
 }
+
+
+
+
+function getname($mail)
+{
+	$conn = connect();
+// Check connection
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	} 
+	
+	$sql="SELECT * FROM usuarios WHERE  mail ='$mail'";
+    $result = mysqli_query($conn,$sql);
+
+    if ($result->num_rows > 0)
+    {
+    while($row = mysqli_fetch_array($result)) {
+        $_SESSION['nom'] = $row['nombre'];
+        $_SESSION['app'] = $row['apellido'];
+    }
+
+	$conn->close();
+}
+}
+
+function getpass($mail)
+{
+	$conn = connect();
+// Check connection
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	} 
+	
+	$sql="SELECT * FROM usuarios WHERE  mail ='$mail'";
+    $result = mysqli_query($conn,$sql);
+
+    if ($result->num_rows > 0)
+    {
+    while($row = mysqli_fetch_array($result)) {
+        $_SESSION['pass'] = $row['password'];
+    }
+
+	$conn->close();
+}
+}
+
 
 ?>

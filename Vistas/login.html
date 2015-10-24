@@ -43,9 +43,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-
-
-
 					<form  class="form-horizontal" method="POST" action="../Controladores/login.php">
 						<div class="form-group">
 							<label for="mail">Correo electrónico:
@@ -54,16 +51,15 @@
 								</span>
 							</label>
 							<input type="mail" class="form-control" id="mail" name="mail" placeholder="Ej: A0123456@itesm.mx" value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
-						</div>
 
-						<div class="row">
-							<div class="form-group">
 								<label for="pass">Contraseña:
 								</label>
 								<input type="password" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> >
-							</div>
+							<br>
+							<button type="submit" name="submit" class="btn btn-success">Log in</button>
 						</div>
-						<button type="submit" name="submit" class="btn btn-success">Log in</button>
+
+						
 					</form>
 					
 				</div>
