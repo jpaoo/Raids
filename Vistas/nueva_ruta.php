@@ -47,6 +47,8 @@
 		<div id="map"></div>
 	</div>
 
+	<textarea id="encoded-polyline"></textarea>
+
 
 	<!--GOOGLE MAPS-->
 
@@ -60,14 +62,15 @@
 	<script type="text/javascript">
 		var map;
 		var clicks=1;
+		var routePath;
 
 		function initMap() {
 			var directionsService = new google.maps.DirectionsService;
 			var directionsDisplay = new google.maps.DirectionsRenderer;
-			
+
 			var start;
 			var end;
-			
+
 
 			var map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 15,
@@ -86,7 +89,7 @@
 
 			google.maps.event.addListener(map, 'click', function(event) {
 				placeMarker(event.latLng);
-				if(clicks>2){
+				if(clicks>1){
 					calculateAndDisplayRoute(directionsService,directionsDisplay);
 				}
 				clicks++;
@@ -95,54 +98,86 @@
 
 
 			function placeMarker(location) {
-				
+
 				if(clicks%2!=0){
-					
+
 					if(clicks>2){
 						start.setMap(null);	
 					}
-					
-				start = new google.maps.Marker({
-					draggable:false,
-					position: location, 
-					map: map,
-					animation: google.maps.Animation.DROP
-				});
 
-				start.setMap(map);
-					
+					start = new google.maps.Marker({
+						draggable:false,
+						position: location, 
+						map: map,
+						animation: google.maps.Animation.DROP
+					});
+
+					start.setMap(map);
+
 				}else{
-				
-				if(clicks>2){
+
+					if(clicks>2){
 						end.setMap(null);	
 					}
-					
-				end = new google.maps.Marker({
-					draggable:false,
-					position: location, 
-					map: map,
-					animation: google.maps.Animation.DROP
-				});
 
-				end.setMap(map);
-					
+					end = new google.maps.Marker({
+						draggable:false,
+						position: location, 
+						map: map,
+						animation: google.maps.Animation.DROP
+					});
+
+					end.setMap(map);
+
 				}
 			}
-			
-			
-		function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-			directionsService.route({
-				origin: start.position,
-				destination: end.position,
-				travelMode: google.maps.TravelMode.DRIVING
-			}, function(response, status) {
-				if (status === google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(response);
-				} else {
-					window.alert('Directions request failed due to ' + status);
-				}
-			});
-		}
+
+
+			function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+				directionsService.route({
+					origin: start.position,
+					destination: end.position,
+					travelMode: google.maps.TravelMode.DRIVING
+				}, function(response, status) {
+					if (status === google.maps.DirectionsStatus.OK) {
+						directionsDisplay.setDirections(response);
+						var pointsArray = [];
+						pointsArray = response.routes[0].overview_path;
+
+
+						if(clicks>3){
+							routePath.setMap(null);	
+						}
+
+						routePath = new google.maps.Polyline({
+							path: pointsArray,
+							geodesic: true,
+							strokeColor: '#FF0000',
+							strokeOpacity: 1.0,
+							strokeWeight: 2
+						});
+
+						routePath.setMap(map);
+						
+						var pathAlone=routePath.getPath();
+						
+						var encodedRoute = google.maps.geometry.encoding.encodePath(pathAlone);
+						
+						encodedRoute = encodedRoute.replace(/\\/g,"\\\\");
+						
+						console.log(encodedRoute);
+						
+						if (encodedRoute) {
+							document.getElementById('encoded-polyline').value = encodedRoute;
+						}
+
+					} else {
+						window.alert('Directions request failed due to ' + status);
+					}
+				});
+			}
+
+
 
 
 
