@@ -220,4 +220,31 @@ function saveNewRoute($route,$start,$end,$title){
 	$conn->close();
 	
 }
+
+function getUserRoutes(){
+	
+	session_start();
+	
+	$id= $_SESSION['idUsuario'];
+	
+	$conn = connect();
+	$cosas=[];
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	} 
+	$sql = "SELECT * FROM ruta WHERE idUsuario='$id'";
+	$result = mysqli_query($conn,$sql);
+	if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;	
+	}
+	
+	
+}
 ?>
