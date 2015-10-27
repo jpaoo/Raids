@@ -96,6 +96,7 @@ function login($mail, $pass)
 		{
 			session_start();
 			$_SESSION['mail'] = $mail;
+
 			$_SESSION['idUsuario'] = $row["id"];
 			header("Location:../Vistas/mis_viajes.php");
 			exit;
@@ -209,10 +210,13 @@ function saveNewRoute($route,$start,$end,$title){
 		die("No se pudo establecer la conexión.");
 	} 
 	session_start();
-	$sql = "INSERT INTO ruta (idusuario,origen,destino,camino,nombre) VALUES (".$_SESSION['idUsuario'].",`".$start."`,`".$end."`,`".$route."`,`".$title."`)";
-	
-	$conn->query($sql);
-	
+
+	$aux = $_SESSION['idUsuario'];
+
+	$sql = "INSERT INTO ruta(idusuario, origen, destino, camino, nombre) VALUES ('$aux', '$start', '$end', '$route', '$title')";
+	mysqli_query($conn, $sql);
+
+
 	$conn->close();
 	
 }

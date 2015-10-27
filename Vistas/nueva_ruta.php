@@ -194,6 +194,7 @@
 						if (results[1]) {
 
 							startAdress=results[1].formatted_address;
+							startAdress=startAdress.replace(",",".");
 
 
 						} else {
@@ -210,6 +211,7 @@
 						if (results[1]) {
 
 							endAdress=results[1].formatted_address;
+							endAdress=endAdress.replace(",",".");
 
 						} else {
 							endAdress="unknown";
