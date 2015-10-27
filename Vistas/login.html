@@ -13,6 +13,14 @@
 	<!-- Latest compiled JavaScript-->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+	<style media="screen">
+		*{
+font-family: 'Montserrat', sans-serif;
+		}
+	</style>
+
 
 
 </head>
@@ -47,7 +55,7 @@
 						<div class="form-group">
 							<label for="mail">Correo electrónico:
 								<span id="errMail">
-									<?php echo $errMail ?>
+									<font color = "red"><?php echo $errMail ?></font>
 								</span>
 							</label>
 							<input type="mail" class="form-control" id="mail" name="mail" placeholder="Ej: A0123456@itesm.mx" value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
@@ -59,9 +67,9 @@
 							<button type="submit" name="submit" class="btn btn-success">Log in</button>
 						</div>
 
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 		</div>

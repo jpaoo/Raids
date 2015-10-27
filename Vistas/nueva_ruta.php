@@ -9,6 +9,14 @@
 	<!--Custom CSS-->
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+		<style media="screen">
+			*{
+	font-family: 'Montserrat', sans-serif;
+			}
+		</style>
 	<style type="text/css">
 		#map {
 			margin: auto;
@@ -38,8 +46,8 @@
 
 	<div class="row col-xs-8 col-sm-8 col-md-8">
 
-		Nombre de la ruta: <input type="text" type="text" id="routeName" placeholder="Origen" />						
-		
+		Nombre de la ruta: <input type="text" type="text" id="routeName" placeholder="Origen" />
+
 	</div>
 	<br>
 	<div class="row col-xs-8 col-sm-8 col-md-8">
@@ -69,13 +77,13 @@
 		var start;
 		var end;
 		var startAdress, endAdress;
-		
+
 		function initMap() {
 			var directionsService = new google.maps.DirectionsService;
 			var directionsDisplay = new google.maps.DirectionsRenderer;
-			
+
 			var geocoder = new google.maps.Geocoder();
-			
+
 			var locationplz = {lat: 20.612888, lng: -100.404657};
 
 			var map = new google.maps.Map(document.getElementById('map'), {
@@ -90,7 +98,7 @@
 			var onChangeHandler = function() {
 				calculateAndDisplayRoute(directionsService, directionsDisplay);
 			};
-			
+
 			//document.getElementById('start').addEventListener('change', onChangeHandler);
 		//	document.getElementById('end').addEventListener('change', onChangeHandler);
 
@@ -110,12 +118,12 @@
 				if(clicks%2!=0){
 
 					if(clicks>2){
-						start.setMap(null);	
+						start.setMap(null);
 					}
 
 					start = new google.maps.Marker({
 						draggable:false,
-						position: location, 
+						position: location,
 						map: map,
 						animation: google.maps.Animation.DROP
 					});
@@ -125,12 +133,12 @@
 				}else{
 
 					if(clicks>2){
-						end.setMap(null);	
+						end.setMap(null);
 					}
 
 					end = new google.maps.Marker({
 						draggable:false,
-						position: location, 
+						position: location,
 						map: map,
 						animation: google.maps.Animation.DROP
 					});
@@ -154,7 +162,7 @@
 
 
 						if(clicks>3){
-							routePath.setMap(null);	
+							routePath.setMap(null);
 						}
 
 						routePath = new google.maps.Polyline({
@@ -182,15 +190,15 @@
 				});
 			}
 
-			
+
 
 			function geocodeStartEnd(startPoint, endPoint){
-				
+
 
 				geocoder.geocode({'location': startPoint},function(results, status) {
-					
+
 					if (status === google.maps.GeocoderStatus.OK) {
-						
+
 						if (results[1]) {
 
 							startAdress=results[1].formatted_address;
@@ -198,7 +206,7 @@
 
 
 						} else {
-							
+
 							startAdress="unknown";
 						}
 					} else {
@@ -229,7 +237,7 @@
 		function sendRoute(){
 
 
-			
+
 			$.post("../Controladores/routeHandler.php",
 				   {
 				encodedRoute: encodedRoute,
@@ -241,7 +249,7 @@
 				alert("Data: " + data + "\nStatus: " + status);
 				//window.location.replace("../Controladores/routeHandler.php");
 
-			});	
+			});
 
 		}
 

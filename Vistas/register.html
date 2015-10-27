@@ -7,6 +7,16 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+		<style media="screen">
+			*{
+	font-family: 'Montserrat', sans-serif;
+			}
+			#tit {
+					font-family: 'Montserrat', sans-serif;
+			}
+		</style>
 
 </head>
 
@@ -17,7 +27,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="../Vistas/index.html">
-					<span class="glyphicon glyphicon-arrow-left"> Regresar a la página de inicio</span>
+					<span id="tit"> Regresar a la página de inicio</span>
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
@@ -44,7 +54,7 @@
 						<div class="form-group col-md-6">
 							<label for="nombre">Nombre:
 								<span id="errname">
-									<?php echo $errNombre ?>
+									<font color = "red">	<?php echo $errNombre ?></font>
 								</span>
 							</label>
 							<input type="text" class="form-control" id="nombre" name="nombre" value=<?php if (isset($_POST[ "nombre"])) echo $_POST[ "nombre"] ?> >
@@ -53,7 +63,7 @@
 						<div class="form-group col-md-6">
 							<label for="apellido">Apellido:
 								<span id="errApellido">
-									<?php echo $errApellido ?>
+									<font color = "red"><?php echo $errApellido ?></font>
 								</span>
 							</label>
 							<input type="text" class="form-control" id="apellido" name="apellido" value=<?php if (isset($_POST[ "apellido"])) echo $_POST[ "apellido"] ?> >
@@ -63,7 +73,7 @@
 					<div class="form-group">
 						<label for="mail">Correo electrónico:
 							<span id="errMail">
-								<?php echo $errMail ?>
+									<font color = "red"><?php echo $errMail ?></font>
 							</span>
 						</label>
 						<input type="mail" class="form-control" id="mail" name="mail" placeholder="Ej: A0123456@itesm.mx" value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
@@ -73,7 +83,7 @@
 						<div class="form-group col-md-6">
 							<label for="pass">Contraseña:
 								<span id="errCont1">
-									<?php echo $errCont1 ?>
+										<font color = "red"><?php echo $errCont1 ?></font>
 								</span>
 							</label>
 							<input type="password" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> >
@@ -82,7 +92,7 @@
 						<div class="form-group col-md-6">
 							<label for="pass2">Confirmar contraseña:
 								<span id="errCont2">
-									<?php echo $errCont2 ?>
+										<font color = "red"><?php echo $errCont2 ?></font>
 								</span>
 							</label>
 							<input type="password" class="form-control" id="pass2" name="pass2" value=<?php if (isset($_POST[ "pass2"])) echo $_POST[ "pass2"] ?>>
@@ -94,7 +104,7 @@
 						<label>
 							<input type="checkbox" name="terminos">Acepto los términos y condiciones.
 							<span id="errTerm">
-								<?php echo $errTerm ?>
+								<font color = "red">	<?php echo $errTerm ?><font>
 							</span>
 						</label value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
 					</div>

@@ -8,6 +8,13 @@
 	<!--Custom CSS-->
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+		<style media="screen">
+			*{
+	font-family: 'Montserrat', sans-serif;
+			}
+		</style>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script 	></script>
 </head>
@@ -65,7 +72,7 @@
 
 				<div class="form-group col-md-6">
 					<label for="pass2">Confirmar contraseña:
-						
+
 					</label>
 					<input type="password" class="form-control" id="pass2" name="pass2">
 				</div>

@@ -8,6 +8,13 @@
   	<!--Custom CSS-->
   	<link href="css/custom_css_main_page.css" rel="stylesheet">
   	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+    	<style media="screen">
+    		*{
+    font-family: 'Montserrat', sans-serif;
+    		}
+    	</style>
   <body>
 
 	<?php include("templates.php"); ?>
