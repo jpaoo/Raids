@@ -20,6 +20,22 @@
 	font-family: 'Montserrat', sans-serif;
 			}
 		</style>
+		<script type="text/javascript">
+
+		function fetch_select(val)
+		{
+		   $.ajax({
+		     type: 'post',
+		     url: 'fetch_data.php',
+		     data: {
+		       get_option:val
+		     },
+		     success: function (response) {
+		       document.getElementById("new_select").innerHTML=response;
+		     }
+		   });
+		}
+</script>
 </head>
 
 <body>
@@ -40,7 +56,7 @@
 
 	<!--Logo image -->
 	<div class="text-center">
-		<img src="images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
+		<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
 		<br>
 	</div>
 
@@ -59,12 +75,56 @@
 									<font color = "red">	<?php echo $errMarca; ?></font>
 								</span>
 							</label>
-							<select class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+							<select onchange="fetch_select(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+								<option>Selecciona una marca</option>
+
+
+								<?php
+
+									$conn = connect();
+
+									if ($conn->connect_error) {
+										die("No se pudo establecer la conexión.");
+									}
+
+									$sql = "SELECT DISTINCT make FROM modelos ORDER BY make ASC";
+									$result = mysqli_query($conn,$sql);
+
+									while ($data = mysqli_fetch_array($result)){
+										echo "<option>".$data['make']."</option>";
+									}
+
+
+
+								?>
+
+
+
+								<!-- <option>Acura</option>
+								<option>Audi</option>
+								<option>BMW</option>
+								<option>Buick</option>
+								<option>Cadillac</option>
+								<option>Chevrolet</option>
+								<option>Chrysler</option>
+								<option>Dodge</option>
+								<option>Fiat</option>
+								<option>Ford</option>
+								<option>GMC</option>
+								<option>Honda</option>
+								<option>Hyundai</option>
+								<option>Infiniti</option>
+								<option>Jaguar</option>
+								<option>Jeep</option>
 								<option></option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option> -->
 						 </select>
 							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
@@ -75,12 +135,8 @@
 									<font color = "red"><?php echo $errModelo ?></font>
 								</span>
 							</label>
-							<select class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
+							<select  id="new_select" class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
 								<option></option>
-							 	<option>1</option>
-							 	<option>2</option>
-							 	<option>3</option>
-							 	<option>4</option>
 						 </select>
 							<!-- <input type="text" class="form-control" id="modelo" name="modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> > -->
 						</div>

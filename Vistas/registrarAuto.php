@@ -20,11 +20,15 @@
 	font-family: 'Montserrat', sans-serif;
 			}
 		</style>
+<script>
+
+</script>
+
 </head>
 
 <body>
 
-
+<?php $placa = "" ?>
 
 	<!-- Navbar top-->
 	<div class="navbar navbar-default navbar-static-top">
@@ -40,7 +44,7 @@
 
 	<!--Logo image -->
 	<div class="text-center">
-		<img src="images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
+		<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
 		<br>
 	</div>
 
@@ -59,12 +63,39 @@
 									<font color = "red">	<?php echo $errMarca; ?></font>
 								</span>
 							</label>
-							<select class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+							<select onchange="showMake(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+								<option>Selecciona una marca</option>
+
+
+
+
+
+
+								<!-- <option>Acura</option>
+								<option>Audi</option>
+								<option>BMW</option>
+								<option>Buick</option>
+								<option>Cadillac</option>
+								<option>Chevrolet</option>
+								<option>Chrysler</option>
+								<option>Dodge</option>
+								<option>Fiat</option>
+								<option>Ford</option>
+								<option>GMC</option>
+								<option>Honda</option>
+								<option>Hyundai</option>
+								<option>Infiniti</option>
+								<option>Jaguar</option>
+								<option>Jeep</option>
 								<option></option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option> -->
 						 </select>
 							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
@@ -75,12 +106,9 @@
 									<font color = "red"><?php echo $errModelo ?></font>
 								</span>
 							</label>
-							<select class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
+							<select  class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
 								<option></option>
-							 	<option>1</option>
-							 	<option>2</option>
-							 	<option>3</option>
-							 	<option>4</option>
+								
 						 </select>
 							<!-- <input type="text" class="form-control" id="modelo" name="modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> > -->
 						</div>
@@ -92,7 +120,7 @@
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
 						</label>
-						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" value=<?php if (isset($_POST[ "placa"])) echo $_POST[ "placa"] ?> >
+						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" >
 					</div>
 
 					<div class="row">

@@ -60,6 +60,6 @@ else include_once("../Vistas/registrarAuto.html");
 
 }
 
-else include("../Vistas/registrarAuto.html");
+else include_once("../Vistas/registrarAuto.html");
 
 ?>

@@ -92,7 +92,7 @@
 
 
 	<div class="col-md-2 col-md-offset-6" style="padding-top: 3%;">
-		<a href="registrarAuto.html"><button type="button" class="btn btn-success">Agregar Auto</button></a>
+		<a href="../Controladores/registrarAuto.php"><button type="button" class="btn btn-success">Agregar Auto</button></a>
 	</div>
 		<!--JQUERY-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
