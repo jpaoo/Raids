@@ -24,7 +24,7 @@
 
 <body>
 
-<?php $placa = "" ?>
+
 
 	<!-- Navbar top-->
 	<div class="navbar navbar-default navbar-static-top">
@@ -92,7 +92,7 @@
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
 						</label>
-						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" >
+						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" value=<?php if (isset($_POST[ "placa"])) echo $_POST[ "placa"] ?> >
 					</div>
 
 					<div class="row">
