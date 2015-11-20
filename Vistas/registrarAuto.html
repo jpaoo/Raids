@@ -11,8 +11,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 		<style media="screen">
@@ -20,22 +18,7 @@
 	font-family: 'Montserrat', sans-serif;
 			}
 		</style>
-		<script type="text/javascript">
 
-		function fetch_select(val)
-		{
-		   $.ajax({
-		     type: 'post',
-		     url: 'fetch_data.php',
-		     data: {
-		       get_option:val
-		     },
-		     success: function (response) {
-		       document.getElementById("new_select").innerHTML=response;
-		     }
-		   });
-		}
-</script>
 </head>
 
 <body>
@@ -100,31 +83,7 @@
 
 
 
-								<!-- <option>Acura</option>
-								<option>Audi</option>
-								<option>BMW</option>
-								<option>Buick</option>
-								<option>Cadillac</option>
-								<option>Chevrolet</option>
-								<option>Chrysler</option>
-								<option>Dodge</option>
-								<option>Fiat</option>
-								<option>Ford</option>
-								<option>GMC</option>
-								<option>Honda</option>
-								<option>Hyundai</option>
-								<option>Infiniti</option>
-								<option>Jaguar</option>
-								<option>Jeep</option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option> -->
+
 						 </select>
 							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
@@ -187,11 +146,30 @@
 
 
 
+<script type="text/javascript">
+
+	function fetch_select(val) {
+		 $.ajax({
+			 type: 'POST',
+			 url: '../Vistas/fetch_data.php',
+			 data: {
+				 get_option:val
+			 },
+			 success: function (response) {
+				 document.getElementById("new_select").innerHTML=response;
+			 }
+		 });
+
+	}
+</script>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
+	<script type="text/javascript"></script>
 
 </body>
 
