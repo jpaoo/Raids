@@ -39,7 +39,7 @@
 
 	<!--Logo image -->
 	<div class="text-center">
-		<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
+		<img src="../Vistas/images/AvientameIconOscuro.png" alt="" class="img-responsive center-block">
 		<br>
 	</div>
 
@@ -53,7 +53,7 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="marca">Marca:
+							<label for="marca">Marca: *
 								<span id="errmarca">
 									<font color = "red">	<?php echo $errMarca; ?></font>
 								</span>
@@ -89,7 +89,7 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="modelo">Modelo
+							<label for="modelo">Modelo: *
 								<span id="errModelo">
 									<font color = "red"><?php echo $errModelo ?></font>
 								</span>
@@ -102,7 +102,7 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="placa">Placas:
+						<label for="placa">Placas: *
 							<span id="errPlaca">
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
@@ -112,7 +112,7 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="color">Color:
+							<label for="color">Color: *
 								<span id="errColor">
 										<font color = "red"><?php echo $errColor ?></font>
 								</span>
@@ -139,7 +139,7 @@
 					</div>
 					<button type="submit" name="submit" class="btn btn-success">Registrar</button>
 				</form>
-
+            <p>(*) Campo obligatorio</p>
 			</div>
 		</div>
 	</div>
