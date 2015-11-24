@@ -7,57 +7,32 @@
 	<title>Main Page</title>
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!--Custom CSS-->
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<!--Google Maps-->
+	<style type="text/css">
+		#map {
+			margin: auto;
+			height: 10em;
+			width: 25em;
+		}
 
-		<style media="screen">
-			*{
-	font-family: 'Montserrat', sans-serif;
-			}
-		</style>
+	</style>
 </head>
 
 <body>
-
-	<nav class="navbar navbar-inverse">
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="index.html"><img alt="Volver a inicio" src="images/AvientameIcon.png" id="pageIcon"> </a>
-			</li>
-		</ul>
-
-		</a>
-	</nav>
-
-
-	<div class="text-center col-xs-4 col-sm-3 col-md-3">
-		<div class="avatarcontainer">
-			<img id="avatar" src="images/Dummy1.jpg" alt="Imagen de perfil" class="img-thumbnail ">
-
-		</div>
-
-
-		<div class="list-group">
-			<a href="main_page.html" class="list-group-item">
-				<a href="profile.html" class="list-group-item">Mi Perfil </a>
-				<a href="main_page.html" class="list-group-item">Mis viajes	</a>
-				<a href="buscar_aventon.html" class="list-group-item active" id="selected-main">Buscar Aventón</a>
-				<a href="misautos.html" class="list-group-item">Mis autos</a>
-				<a href="login.html" class="list-group-item list-group-item-danger">Log out</a>
-		</div>
-	</div>
-
-
+	<?php echo "oli plz" ?>
+	<?php include("templates.php"); ?>
+	<?php echo sideBar(); ?>
 
 	<div class="row col-xs-8 col-sm-8 col-md-8">
 		<div class="span12 centered-pills">
-			<h1 class="text-center">BUSCAR AVENTÓN</h1>
+			<h1 class="text-center">CREAR RUTA</h1>
 			<br>
 			<br>
 		</div>
 	</div>
-
-
 
 	<table class="table-hover col-xs-8 col-sm-8 col-md-8">
 
@@ -91,14 +66,11 @@
 		</tr>
 	</table>
 
+
+	<br>
+
 	<div id="map"></div>
-	<!--Google Maps-->
-	<style type="text/css">
-		#map {
-			height: 10em;
-			width: 25em;
-		}
-	</style>
+
 
 	<!--GOOGLE MAPS-->
 
@@ -106,27 +78,56 @@
 		var map;
 
 		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: {
-					lat: -34.397,
-					lng: 150.644
-				},
-				zoom: 8
+			var directionsService = new google.maps.DirectionsService;
+			var directionsDisplay = new google.maps.DirectionsRenderer;
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 12,
+				center: {lat: 20.612888, lng: -100.404657}
+			});
+			directionsDisplay.setMap(map);
+
+			var onChangeHandler = function() {
+				calculateAndDisplayRoute(directionsService, directionsDisplay);
+			};
+			document.getElementById('start').addEventListener('change', onChangeHandler);
+			document.getElementById('end').addEventListener('change', onChangeHandler);
+		}
+
+		function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+			directionsService.route({
+				origin: document.getElementById('start').value,
+				destination: document.getElementById('end').value,
+				travelMode: google.maps.TravelMode.DRIVING
+			}, function(response, status) {
+				if (status === google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				} else {
+					window.alert('Directions request failed due to ' + status);
+				}
 			});
 		}
+
+
+
+
 	</script>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_j5eIplRjkqWaN4Xz-3LyVj45yIfFT6U&callback=initMap">
-	</script>
+	<div class="text-center">
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_j5eIplRjkqWaN4Xz-3LyVj45yIfFT6U&callback=initMap">
+
+
+		</script>
+		</.div>
 	<br>
 	<br>
 	<div class="text-center">
-	<form action="rutas_disponibles.html">
-	<button type="submit" class="btn btn-primary">Buscar</button>
+		<form action="misautos.html">
+			<button type="submit" class="btn btn-primary">Agregar</button>
 		</form>
 	</div>
 	<br>
 	<br>
+
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

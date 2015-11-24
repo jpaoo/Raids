@@ -1,0 +1,12 @@
+<?php
+include_once("../Modelo/util.php");
+if(array_key_exists("encodedRoute",$_POST)){
+	modifyRoute($_POST["idRuta"],$_POST["encodedRoute"],$_POST["startAdress"],$_POST["endAdress"],$_POST["title"]);
+}else{
+	if(array_key_exists("idRuta",$_POST)){
+		saveIdRoute($_POST["idRuta"]);
+	}else{
+		$route=getRoute();
+	}
+}
+?>

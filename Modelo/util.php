@@ -9,14 +9,15 @@ function connect(){
 	$dbname = "avientame";
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-	// $servername = "localhost";
-  //   $username = "jp_ao";
-  //   $password = "";
-  //   $database = "avientame";
-  //   $dbport = 3306;
+
+	/*$servername = "localhost";
+    $username = "jp_ao";
+    $password = "";
+    $database = "avientame";
+    $dbport = 3306;
 
     // Create connection
-    // $conn = new mysqli($servername, $username, $password, $database, $dbport);
+    $conn = new mysqli($servername, $username, $password, $database, $dbport);*/
 
 
 	if ($conn->connect_error) {
@@ -134,10 +135,6 @@ function login($mail, $pass)
 	$conn->close();
 }
 
-
-
-
-
 function getname($mail)
 {
 	$conn = connect();
@@ -178,8 +175,6 @@ function getpass($mail)
 }
 
 /*
-
-
 
 function getname($mail)
 {
@@ -223,8 +218,8 @@ function getpass($mail)
 	$conn->close();
 }
 }
-
 */
+
 function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 
 	if ($conn->connect_error) {
@@ -243,6 +238,51 @@ function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 	return 1;
 
 }
+
+function modificarNombre($conn, $nombre) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$sql = "UPDATE usuarios SET nombre ='$nombre' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+function modificarApellido($conn, $apellido) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$sql = "UPDATE usuarios SET apellido ='$apellido' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+function modificarPass($conn, $pass) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$mail = $_SESSION['mail'];
+
+	$passw = md5(md5($mail).$pass);
+
+	$sql = "UPDATE usuarios SET password ='$passw' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+
 
 function getCar($mail) {
 	session_start();
@@ -289,6 +329,38 @@ function saveNewRoute($route,$start,$end,$title){
 
 }
 
+function modifyRoute($id,$route,$start,$end,$title){
+
+	$conn = connect();
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	}
+	session_start();
+
+	$sql = "UPDATE ruta SET origen='$start', destino='$end', camino='$route', nombre='$title' WHERE id='$id'";
+	mysqli_query($conn, $sql);
+
+
+	$conn->close();
+
+}
+
+function deleteRoute($id){
+
+	$conn = connect();
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	}
+	session_start();
+
+	$sql = "UPDATE ruta SET activo='0' WHERE id='$id'";
+	mysqli_query($conn, $sql);
+
+
+	$conn->close();
+
+}
+
 function getUserRoutes(){
 
 	session_start();
@@ -300,8 +372,10 @@ function getUserRoutes(){
 
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
+
 	}
-	$sql = "SELECT * FROM ruta WHERE idUsuario='$id'";
+	$sql = "SELECT * FROM ruta WHERE idUsuario='$id' AND activo!='0'";
+
 	$result = mysqli_query($conn,$sql);
 	if ($result->num_rows > 0)
 	{
@@ -358,6 +432,47 @@ function show_car($id) {
 		}
 
 		echo "</table>";
+
+
+}
+
+
+function saveIdRoute($idRoute){
+
+	if(isset($idRoute)){
+		session_start();
+		$_SESSION['idRoute'] = $idRoute;
+
+	}
+
+}
+
+function getRoute(){
+
+	if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+	}
+	$id= $_SESSION['idRoute'];
+
+	$conn = connect();
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+	}
+	session_start();
+
+	$sql = "SELECT *  FROM ruta WHERE id='$id'";
+	$result = mysqli_query($conn, $sql);
+
+
+		if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
 
 
 }

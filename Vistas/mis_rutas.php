@@ -11,16 +11,29 @@
 	<link href="../Vistas/css/custom_css_main_page.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<!--Google Maps-->
+
 	<style type="text/css">
 	*{
 font-family: 'Montserrat', sans-serif;
 	}
-		.map {
+	</style>
+
+
+
+	<?php
+include("../Controladores/routeHandler.php");
+
+for($i=0;$i<sizeof($routeList);$i++){
+	echo'<style type="text/css">
+		#map'.$i. '{
 			margin: auto;
 			height: 10em;
 			width: 25em;
 		}
-	</style>
+	</style>';
+}
+
+	?>
 
 </head>
 
@@ -35,9 +48,12 @@ font-family: 'Montserrat', sans-serif;
 	</div>
 	<!--LISTA TOMADOS-->
 
+
 	<div class="col-xs-8 col-sm-8 col-md-9 text-center" >
 		<?php
 include("../Controladores/routeHandler.php");
+
+
 if($routeList==NULL){
 	echo '<p class="text-center">No tienes rutas guardadas</p>';
 }else{
@@ -58,11 +74,15 @@ if($routeList==NULL){
 
 			</tr>
 			<tr>
-				<td colspan=\"3\" class=\"text-center\">
+				<td colspan=\"3\" class=\"text-center\" id=\"" . $routeList[$i]['id'] . "\">
 					<h4>RUTA</h4>
-					<div class=\"map\"></div>
+					<div id=\"map".$i."\"></div>
 					</br>
-					<button class=\"btn-info\">Modificar</button>
+					<button name=\"modificar\" class=\"btn-info\" onclick=\"sendRouteId(this)\" value=\"". $routeList[$i]['id'] ."\">Modificar</button>
+					<button class=\"btn-warning\" onclick=\"deleteRoute(this)\">Activar</button>
+					<button class=\"btn-danger\" onclick=\"deleteRoute(this)\" >Eliminar</button>
+
+
 				</td>
 
 			</tr>"
@@ -100,38 +120,125 @@ if($routeList==NULL){
 		});
 	</script>
 
+	<!--DELETE-->
+
+	<script>
+	function deleteRoute(btn){
+		var idRuta = parseInt($(btn).closest("td").attr("id"));
+
+		$.post("../Controladores/eliminarRuta.php",
+			{
+				idRuta: idRuta
+
+			},
+				function(data, status){
+				window.location.replace("../Vistas/mis_rutas.php");
+
+			});
+
+	}
+
+	<!--ACTIVAR-->
+
+	function createTrip(btn){
+		/*
+		var temp = $(btn).attr("id");
+		temp = temp.replace("eliminar","");
+		var posEliminar= parseInt(temp);
+
+		$.post("../Controladores/eliminarRuta.php",
+			{
+				idRuta: $routeList[posEliminar]['id']
+
+			},
+				function(data, status){
+				window.location.replace("../Vistas/mis_rutas.php");
+
+			});
+		*/
+
+	}
+
+	<!--MODIFICAR-->
+
+	function sendRouteId(btn){
+
+		var idRuta = parseInt($(btn).closest("td").attr("id"));
+
+		$.post("../Controladores/modificarRuta.php",
+			{
+				idRuta: idRuta
+
+			},
+				function(data, status){
+				window.location.replace("../Vistas/modificarRutaView.php");
+
+			});
+
+
+	}
+	</script>
+
+
+
 	<!--GOOGLE MAPS-->
 
 	<script type="text/javascript">
 		var map;
 
 		function initMap() {
-			var mapas = $('.map');
-			for(var i=0;i<$('.map').length;i++){
-				map = new google.maps.Map(mapas[i], {
-					zoom: 14,
-					center: {lat: 20.612888, lng: -100.404657},
-					disableDefaultUI: true
 
-				});
+			var directionsService = new google.maps.DirectionsService;
+			var directionsDisplay = new google.maps.DirectionsRenderer;
+			var geocoder = new google.maps.Geocoder();
 
-				/*	routePath = new google.maps.Polyline({
-							path: google.maps.geometry.encoding.decodePath("wvguH`lYS_C{EnAs@cGAUoAAsA?aC@qDA}AX_K|As"),
-							geodesic: true,
-							strokeColor: '#FF0000',
-							strokeOpacity: 1.0,
-							strokeWeight: 2
-						});
+			var maps=[];
+			var map;
 
-		routePath.setMap(map);*/
+			var options = {
+				zoom: 15,
+				center: {lat: 20.612888, lng: -100.404657},
+				disableDefaultUI: true
 
-			}
+			};
+
+			<?php
+
+				for($i=0;$i<sizeof($routeList);$i++){
+
+					echo "map = new google.maps.Map(document.getElementById('map".$i."'), options);
+
+							maps.push(map);";
+
+
+					echo "var decodedPath=google.maps.geometry.encoding.decodePath(\"".$routeList[$i]['camino']."\");";
+
+					echo "var routePath = new google.maps.Polyline({
+						path: decodedPath,
+						geodesic: true,
+						strokeColor: '#FF0000',
+						strokeOpacity: 1.0,
+						strokeWeight: 2
+					});
+
+					routePath.setMap(maps[".$i."]);";
+				}
+
+			?>
+
+
+			//google.maps.event.trigger(map, 'resize');
+
+
+
+
+
 
 
 
 		}
 	</script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_j5eIplRjkqWaN4Xz-3LyVj45yIfFT6U&callback=initMap">
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_j5eIplRjkqWaN4Xz-3LyVj45yIfFT6U&callback=initMap&libraries=geometry">
 	</script>
 
 	<!--RATY-->
