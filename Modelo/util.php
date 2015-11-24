@@ -477,4 +477,30 @@ function getRoute(){
 
 }
 
+function getUserCars(){
+	
+	session_start();
+	$id= $_SESSION['idUsuario'];
+
+	$conn = connect();
+	$cosas=[];
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+
+	}
+	$sql = "SELECT * FROM auto WHERE idusuario='$id' AND activo!='0'";
+
+	$result = mysqli_query($conn,$sql);
+	if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+}
+
 ?>

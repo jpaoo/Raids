@@ -13,9 +13,9 @@
 	<!--Google Maps-->
 
 	<style type="text/css">
-	*{
-font-family: 'Montserrat', sans-serif;
-	}
+		*{
+			font-family: 'Montserrat', sans-serif;
+		}
 	</style>
 
 
@@ -79,7 +79,7 @@ if($routeList==NULL){
 					<div id=\"map".$i."\"></div>
 					</br>
 					<button name=\"modificar\" class=\"btn-info\" onclick=\"sendRouteId(this)\" value=\"". $routeList[$i]['id'] ."\">Modificar</button>
-					<button class=\"btn-warning\" onclick=\"deleteRoute(this)\">Activar</button>
+					<button type=\"button\" class=\"btn-warning\" \"data-toggle=\"modal\" data-target=\"#modal\">Activar</button>
 					<button class=\"btn-danger\" onclick=\"deleteRoute(this)\" >Eliminar</button>
 
 
@@ -120,63 +120,115 @@ if($routeList==NULL){
 		});
 	</script>
 
+
+	<div id="modal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+				<div class="modal-content">
+				  <div class="modal-header">
+				<h4 class="modal-title">Nuevo Viaje</h4>
+				  </div>
+				  <div class="modal-body">
+				
+					<p>Para crear tu nuevo viaje solo llenas los siguientes datos:</p>
+					<form class="text-center">
+						<label>Fecha: </label> <input type="date" id="routeDate">
+					 	<label>Hora: </label><input type="time" id="routeTime"><br><br>
+					 	
+					  	<label>Selecciona tu Auto: </label>
+					  	
+									
+									<select name="autos">
+									<?php
+										include("../Controladores/crearViaje.php"); 
+										for($i=0;i<sizeof($cars);$i++){
+									  	echo "<option value=\"".$cars[$i]['id']."\">".$cars[$i]['placa']." ".$cars[$i]['modelo']."</option>";
+										}
+									?>
+									
+									</select>			
+   										
+ 						<br><br>
+					  	
+						<label>Capacidad: </label><input type="number" id="routeCapacity"><br>
+					
+					</form>
+					
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="isActivated">Activar</button>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+					
+	
 	<!--DELETE-->
 
 	<script>
-	function deleteRoute(btn){
-		var idRuta = parseInt($(btn).closest("td").attr("id"));
+		function deleteRoute(btn){
+			var idRuta = parseInt($(btn).closest("td").attr("id"));
 
-		$.post("../Controladores/eliminarRuta.php",
-			{
+			
+
+
+			$.post("../Controladores/eliminarRuta.php",
+				   {
 				idRuta: idRuta
 
 			},
-				function(data, status){
+				   function(data, status){
 				window.location.replace("../Vistas/mis_rutas.php");
 
 			});
+				
+			
 
-	}
+		}
 
-	<!--ACTIVAR-->
+		<!--ACTIVAR-->
 
-	function createTrip(btn){
-		/*
-		var temp = $(btn).attr("id");
-		temp = temp.replace("eliminar","");
-		var posEliminar= parseInt(temp);
+			function createTrip(btn){
 
-		$.post("../Controladores/eliminarRuta.php",
-			{
-				idRuta: $routeList[posEliminar]['id']
+				var idRuta = parseInt($(btn).closest("td").attr("id"));
 
-			},
-				function(data, status){
-				window.location.replace("../Vistas/mis_rutas.php");
+			
+				function isActivated(){
 
-			});
-		*/
-
-	}
-
-	<!--MODIFICAR-->
-
-	function sendRouteId(btn){
-
-		var idRuta = parseInt($(btn).closest("td").attr("id"));
-
-		$.post("../Controladores/modificarRuta.php",
-			{
-				idRuta: idRuta
-
-			},
-				function(data, status){
-				window.location.replace("../Vistas/modificarRutaView.php");
-
-			});
+				$.post("../Controladores/mis_viajes.php",
+					   {
+						idRuta: idRuta,
 
 
-	}
+				},
+					   function(data, status){
+					window.location.replace("../Vistas/mis_rutas.php");
+
+				});
+				}
+
+
+			}
+
+		<!--MODIFICAR-->
+
+			function sendRouteId(btn){
+
+				var idRuta = parseInt($(btn).closest("td").attr("id"));
+
+				$.post("../Controladores/modificarRuta.php",
+					   {
+					idRuta: idRuta
+
+				},
+					   function(data, status){
+					window.location.replace("../Vistas/modificarRutaView.php");
+
+				});
+
+
+			}
 	</script>
 
 
@@ -204,16 +256,16 @@ if($routeList==NULL){
 
 			<?php
 
-				for($i=0;$i<sizeof($routeList);$i++){
+for($i=0;$i<sizeof($routeList);$i++){
 
-					echo "map = new google.maps.Map(document.getElementById('map".$i."'), options);
+	echo "map = new google.maps.Map(document.getElementById('map".$i."'), options);
 
 							maps.push(map);";
 
 
-					echo "var decodedPath=google.maps.geometry.encoding.decodePath(\"".$routeList[$i]['camino']."\");";
+	echo "var decodedPath=google.maps.geometry.encoding.decodePath(\"".$routeList[$i]['camino']."\");";
 
-					echo "var routePath = new google.maps.Polyline({
+	echo "var routePath = new google.maps.Polyline({
 						path: decodedPath,
 						geodesic: true,
 						strokeColor: '#FF0000',
@@ -222,7 +274,7 @@ if($routeList==NULL){
 					});
 
 					routePath.setMap(maps[".$i."]);";
-				}
+}
 
 			?>
 
