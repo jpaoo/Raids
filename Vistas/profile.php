@@ -38,10 +38,7 @@
 
 
 	<div class="col-md-4 col-sm-4 col-md-6">
-		<h3 class="text-center">Reputación como viajero</h3>
 		<hr>
-
-		<div class="stars col-md-9 col-sm-9"></div>
 		</br>
 		</div>
 
@@ -49,16 +46,11 @@
 
 
 	<div class="col-md-4 col-sm-4 col-md-4">
-		<h3 class="text-center">Reputación como chófer</h3>
 		<hr>
-
-		<div class="stars col-md-9 col-sm-9"></div>
 			</div>
 
 <div class="col-md-4 col-md-offset-4">
 
-
-		<h3>Agrega un auto para poder obtener calificaciones como chofer.</h3>
 
 		<a href="misautos.php"><button type="button" class="btn btn-warning">Mis autos.</button></a>
 

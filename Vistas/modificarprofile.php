@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="../Vistas/profile.php">
-					<span id="tit">Regresar al perfil</span>
+					<span id="tit">Regresar sin cambios</span>
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
