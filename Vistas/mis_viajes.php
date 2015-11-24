@@ -89,10 +89,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -135,10 +131,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -164,10 +156,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -194,10 +182,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -223,10 +207,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -269,10 +249,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -299,10 +275,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -328,10 +300,6 @@
 
 				</td>
 				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
 
 				</td>
 				<td>
@@ -384,9 +352,6 @@
 	<!--RATY-->
 	<script src="js/jquery.raty.js"></script>
 
-	<script>
-		$('.stars').raty();
-	</script>
 
 
 	<script>
