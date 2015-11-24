@@ -108,7 +108,7 @@
 					<form action="../Controladores/upload.php" method="post" enctype="multipart/form-data">
 						Selecciona una imagen de perfil:
 						<span id="errimg">
-									<font color = "red"><?php echo $errimg ?></font>
+									<font color = "red"><?php echo $errimg; ?></font>
 						</span>
 						<input type="file" name="fileToUpload" id="fileToUpload">
 						<input type="submit" value="Cambiar foto de perfil" name="submit">

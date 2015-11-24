@@ -4,7 +4,6 @@ $errimg = "";
 $target_dir = "../Vistas/uploads/";
 
 session_start();
-
 $newname = $_SESSION['idUsuario'].".";
 
 function findexts ($filename)  { 
@@ -36,17 +35,17 @@ if (file_exists($target_file)) {
 }
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 5000000) {
-    echo "El archivo es muy pesado.";
+    $errimg = "El archivo es muy pesado.";
     $uploadOk = 0;
 }
 // Allow certain file formats
 if($imageFileType != "jpg") {
-    echo "Solo se permiten imagenes jpg.";
+    $errimg =  "Solo se permiten imagenes jpg.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "No se pudo cargar tu imagen.";
+    $errimg =  "No se pudo cargar tu imagen.";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
