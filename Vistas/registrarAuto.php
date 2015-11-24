@@ -11,6 +11,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 		<style media="screen">
@@ -18,6 +20,9 @@
 	font-family: 'Montserrat', sans-serif;
 			}
 		</style>
+<script>
+
+</script>
 
 </head>
 
@@ -39,7 +44,7 @@
 
 	<!--Logo image -->
 	<div class="text-center">
-		<img src="../Vistas/images/AvientameIconOscuro.png" alt="" class="img-responsive center-block">
+		<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
 		<br>
 	</div>
 
@@ -53,56 +58,64 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="marca">Marca: *
+							<label for="marca">Marca:
 								<span id="errmarca">
 									<font color = "red">	<?php echo $errMarca; ?></font>
 								</span>
 							</label>
-							<select onchange="fetch_select(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+							<select onchange="showMake(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
 								<option>Selecciona una marca</option>
 
 
-								<?php
-
-									$conn = connect();
-
-									if ($conn->connect_error) {
-										die("No se pudo establecer la conexión.");
-									}
-
-									$sql = "SELECT DISTINCT make FROM modelos ORDER BY make ASC";
-									$result = mysqli_query($conn,$sql);
-
-									while ($data = mysqli_fetch_array($result)){
-										echo "<option>".$data['make']."</option>";
-									}
-
-
-
-								?>
 
 
 
 
+								<!-- <option>Acura</option>
+								<option>Audi</option>
+								<option>BMW</option>
+								<option>Buick</option>
+								<option>Cadillac</option>
+								<option>Chevrolet</option>
+								<option>Chrysler</option>
+								<option>Dodge</option>
+								<option>Fiat</option>
+								<option>Ford</option>
+								<option>GMC</option>
+								<option>Honda</option>
+								<option>Hyundai</option>
+								<option>Infiniti</option>
+								<option>Jaguar</option>
+								<option>Jeep</option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option> -->
 						 </select>
 							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="modelo">Modelo: *
+							<label for="modelo">Modelo
 								<span id="errModelo">
 									<font color = "red"><?php echo $errModelo ?></font>
 								</span>
 							</label>
-							<select  id="new_select" class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
+							<select  class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
 								<option></option>
+								
 						 </select>
 							<!-- <input type="text" class="form-control" id="modelo" name="modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> > -->
 						</div>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="placa">Placas: *
+						<label for="placa">Placas:
 							<span id="errPlaca">
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
@@ -112,7 +125,7 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="color">Color: *
+							<label for="color">Color:
 								<span id="errColor">
 										<font color = "red"><?php echo $errColor ?></font>
 								</span>
@@ -139,37 +152,18 @@
 					</div>
 					<button type="submit" name="submit" class="btn btn-success">Registrar</button>
 				</form>
-            <p>(*) Campo obligatorio</p>
+
 			</div>
 		</div>
 	</div>
 
 
 
-<script type="text/javascript">
-
-	function fetch_select(val) {
-		 $.ajax({
-			 type: 'POST',
-			 url: '../Vistas/fetch_data.php',
-			 data: {
-				 get_option:val
-			 },
-			 success: function (response) {
-				 document.getElementById("new_select").innerHTML=response;
-			 }
-		 });
-
-	}
-</script>
-
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript"></script>
+
+
 
 </body>
 

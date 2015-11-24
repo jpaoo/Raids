@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,35 +33,10 @@
 
 <body>
 
-	<!--NAVBAR-->
-	<nav class="navbar navbar-inverse">
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="index.html"><img alt="Avientame" src="images/AvientameIcon.png" id="pageIcon"> </a>
-			</li>
-		</ul>
+	<?php include("templates.php"); ?>
+	<?php echo sideBar(); ?>
 
-		</a>
-	</nav>
-
-
-	<!--MENU LATERAL-->
-	<div class="text-center col-xs-4 col-sm-3 col-md-3">
-		<div class="avatarcontainer">
-			<img id="avatar" src="images/Dummy1.jpg" alt="Avatar" class="img-thumbnail ">
-
-		</div>
-
-
-		<div class="list-group">
-			<a href="profile.html" class="list-group-item">Mi Perfil </a>
-			<a href="#" class="list-group-item">Mis viajes</a>
-			<a href="buscar_aventon.html" class="list-group-item">Buscar Ride</a>
-			<a href="misautos.html" class="list-group-item active" id="selected-main">Mis autos</a>
-			<a href="login.html" class="list-group-item list-group-item-danger">Log out</a>
-			<!-- <a href="#" class="list-group-item">Ayuda</a> -->
-		</div>
-	</div>
+	<!-- <?php include_once("../Modelo/util.php"); ?> -->
 
 
 	<!--MENU ARRIBA VIAJES-->
@@ -77,26 +51,31 @@
 		</div>
 	</div>
 
+<!-- <?php session_start(); getCar($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?> -->
 
 	<table class="table-hover col-xs-8 col-sm-8 col-md-8 text-center">
 		<tr>
+			<th style="text-align: center;">Marca</th>
 			<th style="text-align: center;">Modelo</th>
 			<th style="text-align: center;">Placa</th>
 			<th style="text-align: center;">Color</th>
 		</tr>
 		<tr>
-			<td>2015 Ferrari California</td>
-			<td>ULX61</td>
-			<td style="color: red;">ROJO</td>
+			<td><?php echo $_SESSION['mca'] ?></td>
+			<td><?php echo $_SESSION['mdl'] ?></td>
+			<td><?php echo $_SESSION['plca'] ?></td>
+			<td><?php echo $_SESSION['clr'] ?></td>
 			<td>
 				<button type="button" class="btn btn-danger">
 					<a href="#"></a>Eliminar Auto</button>
 			</td>
 		</tr>
+	</table>
 
 
-		<button type="button" class="btn btn-success" href="registrarAuto.html"><a href="registrarAuto.html">Agregar Auto</a></button>
-	<button type="button" class="btn btn-success" href="registrarAuto.html"><a href="crear_modificar_ruta.html">Agregar Ruta</a></button>
+	<div class="col-md-2 col-md-offset-6" style="padding-top: 3%;">
+		<a href="registrarAuto.php"><button type="button" class="btn btn-success">Agregar Auto</button></a>
+	</div>
 		<!--JQUERY-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!--BOOSTRAP-->

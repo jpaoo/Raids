@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +36,7 @@
 	<?php include("templates.php"); ?>
 	<?php echo sideBar(); ?>
 
+	<?php include_once("../Modelo/util.php"); ?>
 
 
 	<!--MENU ARRIBA VIAJES-->
@@ -51,27 +51,48 @@
 		</div>
 	</div>
 
+<!-- <?php session_start(); getCar($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?> -->
+
+
 
 	<table class="table-hover col-xs-8 col-sm-8 col-md-8 text-center">
 		<tr>
+			<th style="text-align: center;">Marca</th>
 			<th style="text-align: center;">Modelo</th>
 			<th style="text-align: center;">Placa</th>
 			<th style="text-align: center;">Color</th>
 		</tr>
-		<tr>
-			<td>2015 Ferrari California</td>
-			<td>ULX61</td>
-			<td style="color: red;">ROJO</td>
-			<td>
-				<button type="button" class="btn btn-danger">
-					<a href="#"></a>Eliminar Auto</button>
-			</td>
+			<?php
+					$id= $_SESSION['idUsuario'];
+
+						$conn = connect();
+
+						if ($conn->connect_error) {
+							die("No se pudo establecer la conexión.");
+						}
+
+						$sql = "SELECT 	* FROM auto WHERE idUsuario = '$id'";
+						$result = mysqli_query($conn,$sql);
+						while ($data = mysqli_fetch_array($result)){
+							$id = $data['id'];
+							echo "<tr>";
+							echo "<td>" .$data['marca']. "</td><td>" .$data['modelo']. "</td><td>" .$data['placa']. "</td><td>" .$data['color']. "</td><td><a href='delete.php?id=$id'><button type='submit' class='btn btn-danger' name='delete' value='Eliminar Auto'>Eliminar Auto</button></a></td>";
+							echo "</tr>";
+						}
+
+						echo "</table>";
+
+
+			?>
+
+
 		</tr>
 	</table>
 
 
+
 	<div class="col-md-2 col-md-offset-6" style="padding-top: 3%;">
-		<a href="registrarAuto.html"><button type="button" class="btn btn-success">Agregar Auto</button></a>
+		<a href="../Controladores/registrarAuto.php"><button type="button" class="btn btn-success">Agregar Auto</button></a>
 	</div>
 		<!--JQUERY-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

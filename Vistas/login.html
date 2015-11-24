@@ -46,7 +46,7 @@ font-family: 'Montserrat', sans-serif;
 
 		<!--Logo image -->
 		<div class="text-center">
-			<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
+			<img src="../Vistas/images/AvientameIconOscuro.png" alt="" class="img-responsive center-block">
 			<br>
 		</div>
 		<!--
@@ -56,20 +56,21 @@ font-family: 'Montserrat', sans-serif;
 				<div class="col-md-6 col-md-offset-3">
 					<form  class="form-horizontal" method="POST" action="../Controladores/login.php">
 						<div class="form-group">
-							<label for="mail">Correo electrónico:
+							<label for="mail">Correo electrónico: *
 								<span id="errMail">
 									<font color = "red"><?php echo $errMail ?></font>
 								</span>
 							</label>
 							<input type="mail" class="form-control" id="mail" name="mail" placeholder="Ej: A0123456@itesm.mx" value=<?php if (isset($_POST[ "mail"])) echo $_POST[ "mail"] ?> >
 
-								<label for="pass">Contraseña:
+								<label for="pass">Contraseña: *
 								</label>
 								<input type="password" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> >
 							<br>
 							<button type="submit" name="submit" class="btn btn-success">Log in</button>
 						</div>
-
+                        <br>
+                        <p>(*) Campo obligatorio</p>
 
 					</form>
 
