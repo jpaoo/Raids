@@ -134,10 +134,6 @@ function login($mail, $pass)
 	$conn->close();
 }
 
-
-
-
-
 function getname($mail)
 {
 	$conn = connect();
@@ -178,8 +174,6 @@ function getpass($mail)
 }
 
 /*
-
-
 
 function getname($mail)
 {
@@ -223,8 +217,8 @@ function getpass($mail)
 	$conn->close();
 }
 }
-
 */
+
 function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 	//
 	// echo "HOLAAA";
@@ -246,6 +240,51 @@ function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 	return 1;
 
 }
+
+function modificarNombre($conn, $nombre) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$sql = "UPDATE usuarios SET nombre ='$nombre' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+function modificarApellido($conn, $apellido) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$sql = "UPDATE usuarios SET apellido ='$apellido' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+function modificarPass($conn, $pass) {
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	session_start();
+	$aux = $_SESSION['idUsuario'];
+	$mail = $_SESSION['mail'];
+
+	$passw = md5(md5($mail).$pass);
+
+	$sql = "UPDATE usuarios SET password ='$passw' WHERE id='$aux'";
+	mysqli_query($conn, $sql);
+	return 1;
+}
+
+
 
 function getCar($mail) {
 	session_start();
