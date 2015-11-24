@@ -1,9 +1,9 @@
 <?php
 
+include_once("../Modelo/util.php");
+
 $errimg = "";
 $target_dir = "../Vistas/uploads/";
-
-session_start();
 $newname = $_SESSION['idUsuario'].".";
 
 function findexts ($filename)  { 

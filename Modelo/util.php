@@ -2,6 +2,11 @@
 <?php
 session_start();
 
+function sesdest() {
+  session_unset(); 
+  session_destroy(); 
+}
+
 function connect(){
 
 

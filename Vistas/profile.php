@@ -27,12 +27,10 @@
 	<div class="text-center col-xs-8 col-sm-8 col-md-8">
 		<h1><?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?></h1>
 		<hr>
-
+				<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-6">
-				<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
-			</div>
+	
 		</div>
 	</div>
 	</div>
