@@ -1,16 +1,11 @@
 <?php
-session_start();
-function sesdest() {
-  session_unset(); 
-  session_destroy(); 
-}
+
+include_once("../Modelo/util.php");
+
 
 if (isset($_GET['dest'])) {
   sesdest();
 }
-
-
-include_once("../Modelo/util.php");
 
 
 $errMail = "";

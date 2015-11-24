@@ -2,6 +2,11 @@
 <?php
 session_start();
 
+function sesdest() {
+  session_unset(); 
+  session_destroy(); 
+}
+
 function connect(){
 
 
@@ -118,8 +123,9 @@ function login($mail, $pass)
 		{
 			// session_start();
 			$_SESSION['mail'] = $mail;
-
 			$_SESSION['idUsuario'] = $row["id"];
+			$_SESSION['nombre'] = $row["nombre"];
+			$_SESSION['apellido'] = $row["apellido"];
 			header("Location:../Vistas/mis_viajes.php");
 			exit;
 		}
@@ -276,6 +282,7 @@ function modificarPass($conn, $pass) {
 	// session_start();
 	$aux = $_SESSION['idUsuario'];
 	$mail = $_SESSION['mail'];
+
 
 	$passw = md5(md5($mail).$pass);
 
@@ -678,6 +685,62 @@ function getUserActiveRoutes(){
 		return NULL;
 	}
 	
+	
+}
+
+function getUserCars(){
+	
+	$id= $_SESSION['idUsuario'];
+
+	$conn = connect();
+	$cosas=[];
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+
+	}
+	$sql = "SELECT * FROM auto WHERE idusuario='$id' AND activo!='0'";
+
+	$result = mysqli_query($conn,$sql);
+	if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+}
+
+function crearViaje($idRuta,$fecha,$hora,$capacidad,$idAuto){
+	
+	$conn = connect();
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	// session_start();
+
+	$idConductor = $_SESSION['idUsuario'];
+	$_SESSION['idRoute']=$idRuta;
+	
+	$ruta= getRoute();
+	$origen = $ruta[0]['origen'];
+
+	$sql = "INSERT INTO viaje(origen,idruta,idconductor,idauto,capacidad,hora,fecha) VALUES ('$origen', '$idRuta', '$idConductor', '$idAuto', '$capacidad','$hora','$fecha')";
+	
+	mysqli_query($conn, $sql);
+		
+	$sql = "UPDATE ruta SET activo='2' WHERE id='$idRuta'";	
+	
+	mysqli_query($conn, $sql);
+	
+	$conn->close();
+	
+
+	return 1;
 	
 }
 
