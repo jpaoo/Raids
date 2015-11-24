@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2015 at 05:58 AM
+-- Generation Time: Nov 24, 2015 at 06:39 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `auto` (
   `color` text NOT NULL,
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `auto`
@@ -7366,14 +7366,15 @@ CREATE TABLE IF NOT EXISTS `ruta` (
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1',
   `nombre` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ruta`
 --
 
 INSERT INTO `ruta` (`id`, `origen`, `destino`, `camino`, `idusuario`, `activo`, `nombre`) VALUES
-(13, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', '}vx|BleycRh@r@zCdDXv@@h@UdCUdBY~A}AtHa@z@WTWNk@LuAJkABwFNiKh@kDVOGY?e@@mEZcA@MKWg@nAaGJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAFyJPuNZs[J{CToCVoBL{@`@kBv@wCj@cB~@{BlAcC`A_BfBeCb@q@pCsDtBuC|DuFjFsH`C_DbAiA~A_B~DsCz@g@xAu@nBs@hA_@dBk@|FsA|LqC~Co@tCo@d@OZQlBgAh@c@jAgArAuAnCoCdCgCdB{AfBuAv@s@~@eApBcCxGeHbBgBjBqB|FcGpGwGp@aAvAoCZo@j@_Ad@e@`@WTMh@Sx@S`BUzAQ~AU~C}@zCaAnCeAxBm@~CUzOc@tBOtASdC]`Gq@lJ_A~ASn@InBg@zPmFb@O\\?ZEhBa@TGvBnH\\~Ap@rEDXDTHDH@lCc@pB_@d@Ep@@^Fd@NtEhDXVf@f@LRXr@b@bBf@nAj@lA^p@vAdC^xAfDlPwElAgBb@w@RFXt@SjClM', 76, 1, 'Mi casa - Tec');
+(13, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', '}vx|BleycRh@r@zCdDXv@@h@UdCUdBY~A}AtHa@z@WTWNk@LuAJkABwFNiKh@kDVOGY?e@@mEZcA@MKWg@nAaGJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAFyJPuNZs[J{CToCVoBL{@`@kBv@wCj@cB~@{BlAcC`A_BfBeCb@q@pCsDtBuC|DuFjFsH`C_DbAiA~A_B~DsCz@g@xAu@nBs@hA_@dBk@|FsA|LqC~Co@tCo@d@OZQlBgAh@c@jAgArAuAnCoCdCgCdB{AfBuAv@s@~@eApBcCxGeHbBgBjBqB|FcGpGwGp@aAvAoCZo@j@_Ad@e@`@WTMh@Sx@S`BUzAQ~AU~C}@zCaAnCeAxBm@~CUzOc@tBOtASdC]`Gq@lJ_A~ASn@InBg@zPmFb@O\\?ZEhBa@TGvBnH\\~Ap@rEDXDTHDH@lCc@pB_@d@Ep@@^Fd@NtEhDXVf@f@LRXr@b@bBf@nAj@lA^p@vAdC^xAfDlPwElAgBb@w@RFXt@SjClM', 76, 1, 'Mi casa - Tec'),
+(14, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', 'ixx|BjcycRp@hAxDjELPPj@@b@A^Kt@g@fEaBbI]hAY`@UPg@P{@JuAF{ELoBFiBH@\\|CKrGQpCORzC?J', 76, 0, 'tec-cadadiana');
 
 -- --------------------------------------------------------
 
@@ -7479,7 +7480,7 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT for table `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `modelos`
 --
@@ -7489,7 +7490,7 @@ ALTER TABLE `modelos`
 -- AUTO_INCREMENT for table `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

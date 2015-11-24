@@ -49,70 +49,66 @@
 		<div class="span12 centered-pills">
 			<h1 class="text-center">VIAJES</h1>
 			<ul class="nav nav-pills ">
-				<li role="presentation" class="active nav-Pills-active" id="btnencurso"><a href="#">EN CURSO</a></li>
-				<li role="presentation" id="btntomados"><a href="#">TOMADOS</a></li>
-				<li role="presentation" id="btnofrecidos"><a href="#">OFRECIDOS</a></li>
+				<li role="presentation" class="active nav-Pills-active" id="btnencurso"><a href="#">POR TOMAR</a></li>
+			<!--	<li role="presentation" id="btntomados"><a href="#">TOMADOS</a></li>
+				<li role="presentation" id="btnofrecidos"><a href="#">OFRECIDOS</a></li>-->
 			</ul>
 		</div>
 	</div>
 
 
 	<!--LISTA EN CURSO-->
-
+	
 	<div class="col-xs-8 col-sm-8 col-md-8" id="encurso">
-		<table class="table table-hover ">
-			<tr>
-				<th>FECHA</th>
-				<th>CONDUCTOR</th>
-				<th>ORIGEN</th>
-				<th>DESTINO</th>
-				<th>HORA</th>
+	
+	<?php
+				include("../Controladores/misViajesController.php"); 
 
-			</tr>
-			<tr>
-				<td>10/09/2015</td>
-				<td>Mario Mesa</td>
-				<td>Tec de Monterrey</td>
-				<td>Mi Casa</td>
-				<td>16:10</td>
+				if($myRoutes==NULL){
+				
+					echo "No tienes rutas activas.";	
+					}else{
 
-			</tr>
-			<tr>
-				<td colspan="2">
-					<h4>RUTA</h4>
-					<div id="map3"></div>
-				</td>
-				<td colspan="2">
-					<h4 class="text-center">COSTO: $0</h4></br>
-					<p class="text-center">19:24 - Ponciano Arriaga 403A</p>
-					<p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
+						echo '<table class="table table-hover report">
+					<tr>
+						<th class="text-center">HORA</th>
+						<th class="text-center">FECHA</th>
+						<th class="text-center">ORIGEN</th>
+						<th class="text-center">LUGARES DISPONIBLES</th>
+					</tr>';
 
-				</td>
-				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
+							for($i=0;$i<sizeof($possibleRoutes)-1;$i++){
+								echo
 
-				</td>
-				<td>
+									"<tr>
+										<td>".$myRoutes[$i]['hora']."</td>
+										<td>".$myRoutes[$i]['fecha']."</td>
+										<td>".$myRoutes[$i]['origen']."</td>
+										<td>".$myRoutes[$i]['capacidad']."</td>
 
-				</td>
-			</tr>
+									</tr>";
+							}
 
-		</table>
+						echo '</table>';
+
+					}
+			
+	
+	?>
 	</div>
 
-	<!--LISTA TOMADOS-->
+	<!--<!--LISTA TOMADOS-->
 
 	<div class="col-xs-8 col-sm-8 col-md-8" id="tomados">
 		<table class="table table-hover report">
+		
+			
 			<tr>
 				<th>FECHA</th>
 				<th>CONDUCTOR</th>
 				<th>ORIGEN</th>
-				<th>DESTINO</th>
 				<th>HORA</th>
+				<th>LUGARES DISPONIBLES</th>
 
 			</tr>
 			<tr>
@@ -128,19 +124,13 @@
 					<h4>RUTA</h4>
 					<div id="map"></div>
 				</td>
-				<td colspan="2">
+				<td colspan="3">
 					<h4 class="text-center">COSTO: $0</h4></br>
 					<p class="text-center">19:24 - Ponciano Arriaga 403A</p>
 					<p class="text-center">19:25 - Epigmenio Gonzalez 500</p>
 
 				</td>
-				<td class="text-center">
-					<h4>CALIFICACIÓN</h4></br>
-					<div class="stars"></div>
-					</br>
-					<button class="btn-info btnStarsEnviar">Enviar</button>
-
-				</td>
+			
 				<td>
 
 				</td>
@@ -339,10 +329,7 @@
 				</td>
 			</tr>
 		</table>
-	</div>
-
-
-
+	</div>-->
 
 	<!--JQUERY-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

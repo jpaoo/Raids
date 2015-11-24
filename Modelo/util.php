@@ -1,5 +1,7 @@
 
 <?php
+session_start();
+
 function connect(){
 
 
@@ -114,7 +116,7 @@ function login($mail, $pass)
 
 		if($row["password"] == $passw)
 		{
-			session_start();
+			// session_start();
 			$_SESSION['mail'] = $mail;
 
 			$_SESSION['idUsuario'] = $row["id"];
@@ -226,7 +228,7 @@ function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 		die("No se pudo establecer la conexión.");
 		return 0;
 	}
-	session_start();
+	// session_start();
 
 	$aux = $_SESSION['idUsuario'];
 
@@ -245,7 +247,7 @@ function modificarNombre($conn, $nombre) {
 		die("No se pudo establecer la conexión.");
 		return 0;
 	}
-	session_start();
+	// session_start();
 	$aux = $_SESSION['idUsuario'];
 	$sql = "UPDATE usuarios SET nombre ='$nombre' WHERE id='$aux'";
 	mysqli_query($conn, $sql);
@@ -258,7 +260,7 @@ function modificarApellido($conn, $apellido) {
 		die("No se pudo establecer la conexión.");
 		return 0;
 	}
-	session_start();
+	// session_start();
 	$aux = $_SESSION['idUsuario'];
 	$sql = "UPDATE usuarios SET apellido ='$apellido' WHERE id='$aux'";
 	mysqli_query($conn, $sql);
@@ -271,7 +273,7 @@ function modificarPass($conn, $pass) {
 		die("No se pudo establecer la conexión.");
 		return 0;
 	}
-	session_start();
+	// session_start();
 	$aux = $_SESSION['idUsuario'];
 	$mail = $_SESSION['mail'];
 
@@ -285,7 +287,7 @@ function modificarPass($conn, $pass) {
 
 
 function getCar($mail) {
-	session_start();
+	// session_start();
 
 	$id= $_SESSION['idUsuario'];
 
@@ -317,7 +319,7 @@ function saveNewRoute($route,$start,$end,$title){
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
 	}
-	session_start();
+	// session_start();
 
 	$aux = $_SESSION['idUsuario'];
 
@@ -335,7 +337,7 @@ function modifyRoute($id,$route,$start,$end,$title){
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
 	}
-	session_start();
+	// session_start();
 
 	$sql = "UPDATE ruta SET origen='$start', destino='$end', camino='$route', nombre='$title' WHERE id='$id'";
 	mysqli_query($conn, $sql);
@@ -351,7 +353,7 @@ function deleteRoute($id){
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
 	}
-	session_start();
+	// session_start();
 
 	$sql = "UPDATE ruta SET activo='0' WHERE id='$id'";
 	mysqli_query($conn, $sql);
@@ -363,7 +365,7 @@ function deleteRoute($id){
 
 function getUserRoutes(){
 
-	session_start();
+	// session_start();
 
 	$id= $_SESSION['idUsuario'];
 
@@ -374,7 +376,7 @@ function getUserRoutes(){
 		die("No se pudo establecer la conexión.");
 
 	}
-	$sql = "SELECT * FROM ruta WHERE idUsuario='$id' AND activo!='0'";
+	$sql = "SELECT * FROM ruta WHERE idUsuario='$id' AND activo='1'";
 
 	$result = mysqli_query($conn,$sql);
 	if ($result->num_rows > 0)
@@ -421,13 +423,17 @@ function show_car($id) {
 			die("No se pudo establecer la conexión.");
 		}
 
-		$sql = "SELECT 	* FROM auto WHERE idUsuario = '$id'";
+		$sql = "SELECT 	* FROM auto WHERE idUsuario = '$id' AND activo = 1";
+
 		$result = mysqli_query($conn,$sql);
+
 		echo "<tr><th style='text-align:center;'>Marca</th><th style='text-align:center;'>Modelo</th><th style='text-align:center;'>Placa</th><th style='text-align:center;'>Color</th></tr>";
 		while ($data = mysqli_fetch_array($result)){
 			$id = $data['id'];
 			echo "<tr>";
-			echo "<td>" .$data['marca']. "</td><td>" .$data['modelo']. "</td><td>" .$data['placa']. "</td><td>" .$data['color']. "</td><td><a href='delete.php?id=$id'><button type='submit' class='btn btn-danger' name='delete' value='Eliminar Auto'>Eliminar Auto</button></a></td>";
+			echo "<td>" .$data['marca']. "</td><td>" .$data['modelo']. "</td><td>" .$data['placa']. "</td><td>" .$data['color']. "</td><td><a href='../Controladores/delete.php?id=$id'><button type='submit' class='btn btn-danger' name='delete' value='Eliminar Auto' >Eliminar Auto</button></a></td>";
+			// echo "<td>" .$data['marca']. "</td><td>" .$data['modelo']. "</td><td>" .$data['placa']. "</td><td>" .$data['color']. "</td><td><a href='../Controladores/delete.php?id=$id'><button type='submit' class='btn btn-danger' name='delete' value='Eliminar Auto' data-toggle='modal' data-target='#myModal'>Eliminar Auto</button></a></td>";
+
 			echo "</tr>";
 		}
 
@@ -440,7 +446,6 @@ function show_car($id) {
 function saveIdRoute($idRoute){
 
 	if(isset($idRoute)){
-		session_start();
 		$_SESSION['idRoute'] = $idRoute;
 
 	}
@@ -449,22 +454,20 @@ function saveIdRoute($idRoute){
 
 function getRoute(){
 
-	if (session_status() != PHP_SESSION_ACTIVE) {
-    session_start();
-	}
+	
 	$id= $_SESSION['idRoute'];
 
 	$conn = connect();
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
 	}
-	session_start();
+	//session_start();
 
 	$sql = "SELECT *  FROM ruta WHERE id='$id'";
 	$result = mysqli_query($conn, $sql);
 
 
-		if ($result->num_rows > 0)
+	if ($result->num_rows > 0)
 	{
 		while($cosas[] = mysqli_fetch_array($result));
 		$conn->close();
@@ -477,4 +480,222 @@ function getRoute(){
 
 }
 
+
+function getUserCars(){
+	
+	$id= $_SESSION['idUsuario'];
+
+	$conn = connect();
+	$cosas=[];
+
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+
+	}
+	$sql = "SELECT * FROM auto WHERE idusuario='$id' AND activo!='0'";
+
+	$result = mysqli_query($conn,$sql);
+	if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+}
+
+function crearViaje($idRuta,$fecha,$hora,$capacidad,$idAuto){
+	
+	$conn = connect();
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	// session_start();
+
+	$idConductor = $_SESSION['idUsuario'];
+	$_SESSION['idRoute']=$idRuta;
+	
+	$ruta= getRoute();
+	$origen = $ruta[0]['origen'];
+	
+	
+	$sql = "INSERT INTO viaje(origen,idruta,idconductor,idauto,capacidad,hora,fecha) VALUES ('$origen', '$idRuta', '$idConductor', '$idAuto', '$capacidad','$hora','$fecha')";
+	
+	mysqli_query($conn, $sql);
+		
+	$sql = "UPDATE ruta SET activo='2' WHERE id='$idRuta'";	
+	
+	mysqli_query($conn, $sql);
+	
+	$conn->close();
+	
+
+	return 1;
+	
+}
+
+function getUserPossibleRoutes(){
+	
+	$idUsuario = $_SESSION['idUsuario'];
+	$cosas=[];
+	
+	$conn = connect();	
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	
+	$sql = "SELECT * FROM viaje WHERE idconductor!='$idUsuario' AND activo='1'";
+	
+	$result = mysqli_query($conn,$sql);
+	if ($result->num_rows > 0)
+	{
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+	
+	
+}
+
+function getPossibleWays($routes){
+	
+	$idUsuario = $_SESSION['idUsuario'];
+	$cosas=[];
+	$conn = connect();	
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	
+	for($i=0;$i<sizeof($routes)-1;$i++){
+		$temp = $routes[$i]['idruta'];
+		if($i==0){$sql = "SELECT camino FROM ruta WHERE id='$temp'";}else{
+		$sql .= " UNION SELECT camino FROM ruta WHERE id='$temp'";}
+	}
+	
+	
+	$result = mysqli_query($conn,$sql);
+	
+	if ($result->num_rows > 0)
+	{
+		
+		while($cosas[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+	
+	
+}
+
+function agregarCopiloto($idViaje){
+	
+	$idUsuario = $_SESSION['idUsuario'];
+	$cosas=[];
+	$conn = connect();
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	
+	$sql = "SELECT capacidad FROM viaje WHERE id='$idViaje'";
+	$cupo=mysqli_query($conn, $sql);
+	
+	if($cupo>0){
+		$sql= "INSERT INTO copilotos(idcopiloto,idviaje) VALUES ('$idUsuario','$idViaje')";
+		$cupo --;
+		mysqli_query($conn, $sql);
+		
+		if($cupo==0){
+			$activo=1;
+		}else{
+			$activo=2;	
+		}
+		
+		$sql = "UPDATE viaje SET capacidad='$cupo',activo='$activo' WHERE id='$idViaje'";
+		mysqli_query($conn, $sql);
+		
+		
+	}
+	
+		
+		
+	
+	
+	
+	$conn->close();
+	
+}
+
+function getUserActiveRoutes(){
+	
+	$idUsuario = $_SESSION['idUsuario'];
+	$idViajes=[];
+	$cosas=[];
+	
+	$conn = connect();	
+	
+	if ($conn->connect_error) {
+		die("No se pudo establecer la conexión.");
+		return 0;
+	}
+	
+	$sql = "SELECT idviaje FROM copilotos WHERE idcopiloto!='$idUsuario'";
+	$result = mysqli_query($conn,$sql);
+	
+	for($i=0;$i<sizeof($result)-1;$i++){
+		
+		$temp = $result[$i];
+		if($i==0){$sql = "SELECT * FROM viaje WHERE id='$temp'";}else{
+		$sql .= " UNION SELECT * FROM viaje WHERE id='$temp'";}
+	}
+	
+
+	
+	$result = mysqli_query($conn,$sql);
+	
+	
+	if ($result->num_rows > 0)
+	{
+		while($idViajes[] = mysqli_fetch_array($result));
+		$conn->close();
+		return $cosas;
+	}else{
+		$conn->close();
+		return NULL;
+	}
+	
+	
+}
+
+
+// function deleteCar($id) {
+// 	$conn = connect();
+// 	if ($conn->connect_error) {
+// 		die("No se pudo establecer la conexión.");
+// 	}
+//
+//
+//
+// 	$sql = "DELETE FROM avientame . auto WHERE auto . id = '$id'";
+//
+// 			if (mysqli_query($conn,$sql)) header('Location:../Vistas/misautos.php');
+//
+// 	$conn->close();
+// }
+
 ?>
+
