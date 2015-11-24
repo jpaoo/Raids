@@ -78,7 +78,8 @@
 				</div>
 
 			</div>
-			<button type="submit" name="submit" class="btn btn-success">Modificar Contraseña</button>
+			<button type="submit" name="submit" class="btn btn-success">Modificar contraseña</button>
+
 		</form>
 	</div>
 
