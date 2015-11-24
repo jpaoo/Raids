@@ -12,6 +12,9 @@
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<!--Google Maps-->
 	<style type="text/css">
+	*{
+font-family: 'Montserrat', sans-serif;
+	}
 		.map {
 			margin: auto;
 			height: 10em;
@@ -32,21 +35,21 @@
 	</div>
 	<!--LISTA TOMADOS-->
 
-	<div class="col-xs-8 col-sm-8 col-md-8">
-		<?php 
+	<div class="col-xs-8 col-sm-8 col-md-9 text-center" >
+		<?php
 include("../Controladores/routeHandler.php");
 if($routeList==NULL){
 	echo '<p class="text-center">No tienes rutas guardadas</p>';
 }else{
 	echo '<table class="table table-hover report">
 			<tr>
-				<th>NOMBRE DE LA RUTA</th>
-				<th>ORIGEN</th>
-				<th>DESTINO</th>
+				<th class="text-center">NOMBRE DE LA RUTA</th>
+				<th class="text-center">ORIGEN</th>
+				<th class="text-center">DESTINO</th>
 			</tr>';
 
 	for($i=0;$i<sizeof($routeList);$i++){
-		echo 
+		echo
 
 			"<tr>
 				<td>".$routeList[$i]['nombre']."</td>
@@ -106,7 +109,7 @@ if($routeList==NULL){
 			var mapas = $('.map');
 			for(var i=0;i<$('.map').length;i++){
 				map = new google.maps.Map(mapas[i], {
-					zoom: 15,
+					zoom: 14,
 					center: {lat: 20.612888, lng: -100.404657},
 					disableDefaultUI: true
 

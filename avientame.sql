@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2015 at 09:26 PM
+-- Generation Time: Nov 24, 2015 at 05:58 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `auto` (
   `color` text NOT NULL,
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `auto`
 --
 
 INSERT INTO `auto` (`id`, `placa`, `marca`, `modelo`, `color`, `idusuario`, `activo`) VALUES
-(1, 'UMND8980', 'FORD', 'FIESTA', 'ROJO', 76, 1);
+(42, 'NOSESRY', 'Ford', 'Windstar', 'Rojo', 76, 1);
 
 -- --------------------------------------------------------
 
@@ -51,10 +51,10 @@ INSERT INTO `auto` (`id`, `placa`, `marca`, `modelo`, `color`, `idusuario`, `act
 
 CREATE TABLE IF NOT EXISTS `modelos` (
   `year` int(11) NOT NULL,
-  `make` text NOT NULL,
+  `make` varchar(40) NOT NULL,
   `model` text NOT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7269 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7288 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modelos`
@@ -7332,7 +7332,25 @@ INSERT INTO `modelos` (`year`, `make`, `model`, `id`) VALUES
 (2013, 'Volvo', 'C30', 7265),
 (2013, 'Volvo', 'C70', 7266),
 (2013, 'Volvo', 'S60', 7267),
-(2013, 'Volvo', 'XC90', 7268);
+(2013, 'Volvo', 'XC90', 7268),
+(2015, 'Acura', 'RLX', 7269),
+(2015, 'Acura', 'ILX', 7270),
+(2015, 'Acura', 'TLX', 7271),
+(2015, 'Alfa Romeo', 'MiTo', 7272),
+(2015, 'Alfa Romeo', 'Giulietta', 7273),
+(2015, 'Alfa Romeo', '4c', 7274),
+(2015, 'Audi', 'A1', 7275),
+(2015, 'BMW', 'i3', 7276),
+(2015, 'BMW', '2 Series', 7277),
+(2015, 'BMW', '4 Series', 7278),
+(2015, 'BMW', 'i8', 7279),
+(2015, 'BMW', 'X1', 7280),
+(2015, 'BMW', 'X4', 7281),
+(2015, 'Chevrolet', 'Matiz', 7282),
+(2015, 'Chevrolet', 'Trax', 7283),
+(2015, 'Dodge', 'Attitude', 7284),
+(2015, 'Dodge', 'Vision', 7285),
+(2015, 'Dodge', 'Dart', 7286);
 
 -- --------------------------------------------------------
 
@@ -7348,23 +7366,14 @@ CREATE TABLE IF NOT EXISTS `ruta` (
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1',
   `nombre` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ruta`
 --
 
 INSERT INTO `ruta` (`id`, `origen`, `destino`, `camino`, `idusuario`, `activo`, `nombre`) VALUES
-(2, 'San Pablo. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'San Pablo Tecnologico. Santiago de QuerÃ©taro, Qro., MÃ©xico', '{cy|Btj{cRpEmDlDqCOaD}@_NOoClAIr@I^IZQh@o@`AgEj@mC\\sBNiAL}@LURWROHOFSBYa@g@sEgF]g@Ye@sAyCqAsDY_Aa@sAGaAq@wGE_ADaCXcI@Og@ABh@CdBUjE', 73, 1, ''),
-(3, 'San Pablo. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'San Pablo Tecnologico. Santiago de QuerÃ©taro, Qro., MÃ©xico', '{cy|Btj{cRpEmDlDqCOaD}@_NOoClAIr@I^IZQh@o@`AgEj@mC\\sBNiAL}@LURWROHOFSBYa@g@sEgF]g@Ye@sAyCqAsDY_Aa@sAGaAq@wGE_ADaCXcI@Og@ABh@CdBUjE', 73, 1, 'aaa'),
-(4, 'Itesmq. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'c|x|BleycRz@_@|@a@LXfAzAzCdDXv@@h@f@j@TLV?ROdA@\\R|@f@~Aj@hBb@z@HbBB|BC\\H`@XZv@hChHqGjHe@`@sDfBmFbCmAx@{BfBk@d@CGCWAw@{@F', 73, 1, 'Tec casa'),
-(5, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', 'kwx|B~_ycR}@}Bm@gBm@oBGe@M}Ao@qGA{@XmHHcCg@AIBeAGoHi@}Ei@SISQQYOW@e@?qAEe@K_AAgAAQIMLyMDiAPeCf@iEl@sCTeAn@uBx@yBlB}DrB_DfA}ArDaFpCuDnGgJxDgFxBoC~A_B~AmAtBsA~BoAfC_AjBk@j@S|EiAVGJCzNcDfDq@`Ba@XKdAm@nAy@v@q@`DcDbGcGt@s@|AkA~@w@t@u@xCoDzIkJpCyCtM{M`AgAx@oAnAkCz@wAf@e@~@i@z@YdASdBU~AQpBa@pDmAlBi@hBw@pA_@f@Mx@IdDOnIUbEOtBU`@Ev@E`D[H@HDb@E|@OfEi@t@MLbA`AfK~@dJbBpQNpATb@t@z@h@x@XJRVrAhBVb@\\z@Tz@d@rBn@pDBRbAK`D[~AUhGyAdBg@dBa@lEgAxHmBbLsCdClL', 72, 1, 'Tec - mi casa'),
-(7, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', 'azx|BhdycRv@]LXfAzAzCdDXv@@h@Ej@e@~DY~AaA|E[vAa@z@WTWNk@LuAJsDHoCHyCLaH`@yBPOG_A@mEZcA@UUO]^eBn@{CJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAByEHuH\\}[JmKHcBToCd@kDn@wCh@kBj@cB~@{BlAcC`A_BfBeCb@q@pCsDtBuC|DuFjFsH`C_DbAiA~A_B~DsCz@g@xAu@nBs@hA_@dBk@pFoA|IqBjBc@~Co@tCo@d@OhCyAh@c@jAgAfDkDpBqBfCeCtC{Bv@s@~@eApBcCxGeHbBgBdGoGtJ}Jp@aAt@uA|@iBj@_Ad@e@`@W~@a@x@S`BUzAQ~AU~C}@zCaAnCeAxBm@~CUlHQlFQtBOtASD@bBKvBUNFbDa@zDk@rAbNTdC~AzOr@xHJ`@NVj@l@`@l@PXXJtAjBRVh@fARl@p@vCr@dEpHu@lIsBlEgAfBg@|Cu@bGyApEgAjBg@p@Q`C`L', 72, 1, 'tec-mi casa'),
-(8, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', 'w}x|B`wxcRJkANa@HIAUjAOlAOQqBWyCaDRc@DHx@d@vEAv@M`BHRnBzErAfDfAzAzCdDXv@@h@f@j@NJ\\@ROdA@\\RxAt@bA\\|@TfBVbBBbBEX@\\H`@XFLp@fBjBjFgCtC_DhDeAl@}G~CmAj@i@ZmA|@qAfAk@d@CGCWAWGyB', 75, 1, 'kjkj'),
-(9, 'Soriana. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', 'grx|BpzycRwAxGa@z@WTWNk@LuAJkABwFNyCL@\\b@CjJWdBGnCU\\M^[\\g@BGFBFBFRd@rEJjALjA{@H', 76, 1, ''),
-(10, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', '}vx|BleycRh@r@zCdDXv@@h@UdCUdBY~A}AtHa@z@WTWNk@LuAJkABwFNyCL@\\b@CjJWdBGnCU\\M^[\\g@BGFBFBFRd@rEJjAm@F', 76, 1, ''),
-(11, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Conjunto Parques. Santiago de QuerÃ©taro, Qro., Mexico', 'gtx|BphycRnBtBXv@@h@f@j@TLV?ROHOFSBYa@g@sEgF]g@Ye@sAyCqAsDjASCMDI?A', 76, 1, 'Tec a la casa'),
-(12, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'San Pablo Tecnologico. Santiago de QuerÃ©taro, Qro., Mexico', '_zx|B~_ycRbAdCfAzAzCdDXv@@h@f@j@NJ\\@ROHOFSBYa@g@sEgF]g@Ye@sAyCqAsDY_Aa@sAGaAq@wGE_ADaCXcI@Og@AIBw@EoDYmAIA|AH~G', 76, 1, 'jhh');
+(13, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', '}vx|BleycRh@r@zCdDXv@@h@UdCUdBY~A}AtHa@z@WTWNk@LuAJkABwFNiKh@kDVOGY?e@@mEZcA@MKWg@nAaGJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAFyJPuNZs[J{CToCVoBL{@`@kBv@wCj@cB~@{BlAcC`A_BfBeCb@q@pCsDtBuC|DuFjFsH`C_DbAiA~A_B~DsCz@g@xAu@nBs@hA_@dBk@|FsA|LqC~Co@tCo@d@OZQlBgAh@c@jAgArAuAnCoCdCgCdB{AfBuAv@s@~@eApBcCxGeHbBgBjBqB|FcGpGwGp@aAvAoCZo@j@_Ad@e@`@WTMh@Sx@S`BUzAQ~AU~C}@zCaAnCeAxBm@~CUzOc@tBOtASdC]`Gq@lJ_A~ASn@InBg@zPmFb@O\\?ZEhBa@TGvBnH\\~Ap@rEDXDTHDH@lCc@pB_@d@Ep@@^Fd@NtEhDXVf@f@LRXr@b@bBf@nAj@lA^p@vAdC^xAfDlPwElAgBb@w@RFXt@SjClM', 76, 1, 'Mi casa - Tec');
 
 -- --------------------------------------------------------
 
@@ -7417,7 +7426,9 @@ CREATE TABLE IF NOT EXISTS `viaje` (
   `idruta` int(11) NOT NULL,
   `idconductor` int(11) NOT NULL,
   `idauto` int(11) NOT NULL,
-  `idcopiloto` int(11) NOT NULL
+  `idcopiloto` int(11) NOT NULL,
+  `tiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `capacidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -7468,17 +7479,17 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT for table `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `modelos`
 --
 ALTER TABLE `modelos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7269;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7288;
 --
 -- AUTO_INCREMENT for table `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

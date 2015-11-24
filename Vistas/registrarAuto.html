@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body onload="maker()">
 
 <?php $placa = "" ?>
 
@@ -29,7 +29,7 @@
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="profile.php"><span class="glyphicon glyphicon-arrow-left"> Regresar a mi perfil</span></a>
+				<a class="navbar-brand" href="../Vistas/misautos.php"><span class="glyphicon glyphicon-arrow-left"> Regresar</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right"></ul>
@@ -59,33 +59,9 @@
 								</span>
 							</label>
 							<select onchange="fetch_select(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
-								<option>Selecciona una marca</option>
-
-
-								<?php
-
-									$conn = connect();
-
-									if ($conn->connect_error) {
-										die("No se pudo establecer la conexión.");
-									}
-
-									$sql = "SELECT DISTINCT make FROM modelos ORDER BY make ASC";
-									$result = mysqli_query($conn,$sql);
-
-									while ($data = mysqli_fetch_array($result)){
-										echo "<option>".$data['make']."</option>";
-									}
-
-
-
-								?>
-
-
-
-
+								<!-- <option>Selecciona una marca</option>
+								<option>Otro</option> -->
 						 </select>
-							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
 
 						<div class="form-group col-md-6">
@@ -97,7 +73,6 @@
 							<select  id="new_select" class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
 								<option></option>
 						 </select>
-							<!-- <input type="text" class="form-control" id="modelo" name="modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> > -->
 						</div>
 					</div>
 
@@ -107,7 +82,7 @@
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
 						</label>
-						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" >
+						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" onkeyup="upperCase(this)">
 					</div>
 
 					<div class="row">
@@ -131,7 +106,6 @@
 							 <option>Rojo</option>
 							 <option>Verde</option>
 						 </select>
-							<!-- <input type="" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> > -->
 						</div>
 
 
@@ -151,7 +125,7 @@
 	function fetch_select(val) {
 		 $.ajax({
 			 type: 'POST',
-			 url: '../Vistas/fetch_data.php',
+			 url: '../Controladores/fetch_data.php',
 			 data: {
 				 get_option:val
 			 },
@@ -161,15 +135,33 @@
 		 });
 
 	}
-</script>
 
+	function upperCase(t){
+		var eleVal = document.getElementById(t.id);
+  	eleVal.value= eleVal.value.toUpperCase().replace(/ /g,'');
+	}
+
+	function maker() {
+
+		$.ajax({
+			type : 'GET',
+			url : '../Controladores/fetch_make.php',
+			DataType: 'string',
+			success: function (response) {
+			document.getElementById("marca").innerHTML = response;
+			}
+		});
+	}
+
+
+</script>
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript"></script>
+
 
 </body>
 

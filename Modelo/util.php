@@ -226,10 +226,7 @@ function getpass($mail)
 
 */
 function agregarAuto($conn, $marca, $modelo, $placa, $color) {
-	//
-	// echo "HOLAAA";
 
-	// $conn = connect();
 	if ($conn->connect_error) {
 		die("No se pudo establecer la conexión.");
 		return 0;
@@ -237,7 +234,7 @@ function agregarAuto($conn, $marca, $modelo, $placa, $color) {
 	session_start();
 
 	$aux = $_SESSION['idUsuario'];
-	// echo $aux;
+
 	$sql = "INSERT INTO auto(idusuario,placa, marca, modelo, color) VALUES ('$aux', '$placa', '$marca', '$modelo', '$color')";
 	mysqli_query($conn, $sql);
 
@@ -315,7 +312,54 @@ function getUserRoutes(){
 		$conn->close();
 		return NULL;
 	}
+}
+
+
+function getMake(){
+	$conn = connect();
+	$sql = "SELECT DISTINCT make FROM modelos ORDER BY make ASC";
+	$result = mysqli_query($conn,$sql);
+	$s = "";
+	$s = "<option>Selecciona una marca</option><option>Otro</option>";
+	while($data=mysqli_fetch_array($result)) $s = $s."<option>".$data['make']."</option>";
+	echo $s;
+	disconnect($conn);
+	return $s;
+}
+
+function getModel($make){
+	$conn = connect();
+	$sql = "SELECT DISTINCT model FROM modelos WHERE make = '$make' ORDER BY model";
+	$find=mysqli_query($conn,$sql);
+	$s = "";
+	while($row=mysqli_fetch_array($find)) $s = $s."<option>".$row['model']."</option>";
+	if ($make == "Otro") $s = $s."<option>Otro</option>";
+	echo $s;
+	disconnect($conn);
+	return $s;
+}
+
+function show_car($id) {
+
+		$conn = connect();
+
+		if ($conn->connect_error) {
+			die("No se pudo establecer la conexión.");
+		}
+
+		$sql = "SELECT 	* FROM auto WHERE idUsuario = '$id'";
+		$result = mysqli_query($conn,$sql);
+		echo "<tr><th style='text-align:center;'>Marca</th><th style='text-align:center;'>Modelo</th><th style='text-align:center;'>Placa</th><th style='text-align:center;'>Color</th></tr>";
+		while ($data = mysqli_fetch_array($result)){
+			$id = $data['id'];
+			echo "<tr>";
+			echo "<td>" .$data['marca']. "</td><td>" .$data['modelo']. "</td><td>" .$data['placa']. "</td><td>" .$data['color']. "</td><td><a href='delete.php?id=$id'><button type='submit' class='btn btn-danger' name='delete' value='Eliminar Auto'>Eliminar Auto</button></a></td>";
+			echo "</tr>";
+		}
+
+		echo "</table>";
 
 
 }
+
 ?>

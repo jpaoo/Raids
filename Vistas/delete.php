@@ -36,11 +36,12 @@ echo $id;
 
 $sql = "DELETE FROM avientame . auto WHERE auto . id = '$id'";
 if (mysqli_query($conn,$sql)) header('Location:../Vistas/misautos.php');
-else echo "no";
+// if (deletedAuto()) header('Location:../Vistas/misautos.php');
+// else include('../Vistas/misautos.php');
 
 $conn->close();
 
-echo "hpla";
+
 
 
 ?>

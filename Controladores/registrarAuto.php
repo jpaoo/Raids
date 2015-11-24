@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-if (empty($_POST["marca"])) {
+if ($_POST["marca"] == "Selecciona una marca") {
  $errMarca = "Debes seleccionar una marca.";
  $errors++;
 }
@@ -57,7 +57,6 @@ if($errors == 0) {
 
 }
 else include_once("../Vistas/registrarAuto.html");
-
 }
 
 else include_once("../Vistas/registrarAuto.html");
