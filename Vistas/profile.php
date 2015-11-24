@@ -49,8 +49,7 @@
 		<hr>
 			</div>
 
-<div class="col-md-4 col-md-offset-4">
-
+<div class="text-center col-xs-8 col-sm-8 col-md-8">
 
 		<a href="misautos.php"><button type="button" class="btn btn-warning">Mis autos.</button></a>
 
