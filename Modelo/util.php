@@ -123,8 +123,9 @@ function login($mail, $pass)
 		{
 			// session_start();
 			$_SESSION['mail'] = $mail;
-
 			$_SESSION['idUsuario'] = $row["id"];
+			$_SESSION['nombre'] = $row["nombre"];
+			$_SESSION['apellido'] = $row["apellido"];
 			header("Location:../Vistas/mis_viajes.php");
 			exit;
 		}
@@ -281,6 +282,7 @@ function modificarPass($conn, $pass) {
 	// session_start();
 	$aux = $_SESSION['idUsuario'];
 	$mail = $_SESSION['mail'];
+
 
 	$passw = md5(md5($mail).$pass);
 

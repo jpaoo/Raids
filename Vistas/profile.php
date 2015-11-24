@@ -25,9 +25,18 @@
 	<?php include_once("../Modelo/util.php"); ?>
 
 	<div class="text-center col-xs-8 col-sm-8 col-md-8">
-		<h1><?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?></h1>
+		<h1>Perfil</h1>
 		<hr>
-				<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
+		<br>
+		<br>
+		<h2>Nombre: <?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['nom']; ?></h2>
+		<h2>Apellido: <?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['app']; ?></h2>
+		<h2>Correo: <?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['mail'];?></h2>
+		<hr>
+		<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
+		<a href="misautos.php"><button type="button" class="btn btn-warning">Mis autos.</button></a>
+		<br>
+		<br>
 	<div class="container">
 		<div class="row">
 	
@@ -35,26 +44,6 @@
 	</div>
 	</div>
 
-
-
-	<div class="col-md-4 col-sm-4 col-md-6">
-		<hr>
-		</br>
-		</div>
-
-
-
-
-	<div class="col-md-4 col-sm-4 col-md-4">
-		<hr>
-			</div>
-
-<div class="col-md-4 col-md-offset-4">
-
-
-		<a href="misautos.php"><button type="button" class="btn btn-warning">Mis autos.</button></a>
-
-</div>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
