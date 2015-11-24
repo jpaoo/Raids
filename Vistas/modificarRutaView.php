@@ -30,16 +30,23 @@
 
 	<div class="row col-xs-8 col-sm-8 col-md-8">
 		<div class="span12 centered-pills">
-			<h1 class="text-center">CREAR RUTA</h1>
+			<h1 class="text-center">MODIFICAR RUTA</h1>
 			<br>
 			<br>
 		</div>
 	</div>
 
 	<div class="row col-xs-8 col-sm-8 col-md-8 text-center">
+		
+		<?php 
+			include("../Controladores/modificarRuta.php");			
+			echo "Nombre de la ruta: <input type=\"text\" id=\"routeName\" value=\"".$route[0]["nombre"]."\"/>";
+			
+		
+		?>
 
-		Nombre de la ruta: <input type="text" type="text" id="routeName" placeholder="ex. Mi casa a la escuela" />
-				
+		
+		
 	</div>
 	<div class="row col-xs-8 col-sm-8 col-md-8 text-center">
 	<br>
@@ -53,7 +60,8 @@
 
 	<div class="text-center row col-xs-8 col-sm-8 col-md-8">
 
-		<button onclick="sendRoute()" class="btn btn-primary">Agregar</button>
+		<button onclick="sendRoute()" class="btn btn-primary">Modificar</button>
+		<button onclick="backToAll()" class="btn btn-primary">Cancelar</button>
 
 	</div>
 
@@ -229,21 +237,30 @@
 
 
 		function sendRoute(){
+			<?php  
+			echo "var idRutaActual = ".$route[0]["id"].";";
+			
+			?>
 
 
 			
-			$.post("../Controladores/routeHandler.php",
+			$.post("../Controladores/modificarRuta.php",
 				   {
 				encodedRoute: encodedRoute,
 				startAdress: startAdress,
 				endAdress: endAdress,
-				title: $('#routeName').val()
+				title: $('#routeName').val(),
+				idRuta: idRutaActual
 			},
-				function(data, status){
+				   function(data, status){
 				window.location.replace("../Vistas/mis_rutas.php");
 
 			});	
 
+		}
+		
+		function backToAll(){
+			window.location.replace("../Vistas/mis_rutas.php");
 		}
 
 	</script>
