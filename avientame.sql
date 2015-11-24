@@ -2,10 +2,10 @@
 -- version 4.4.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 24, 2015 at 06:39 AM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 24-11-2015 a las 21:33:10
+-- Versión del servidor: 5.6.26
+-- Versión de PHP: 5.5.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `avientame`
+-- Base de datos: `avientame`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auto`
+-- Estructura de tabla para la tabla `auto`
 --
 
 CREATE TABLE IF NOT EXISTS `auto` (
@@ -34,19 +34,39 @@ CREATE TABLE IF NOT EXISTS `auto` (
   `color` text NOT NULL,
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `auto`
+-- Volcado de datos para la tabla `auto`
 --
 
 INSERT INTO `auto` (`id`, `placa`, `marca`, `modelo`, `color`, `idusuario`, `activo`) VALUES
-(42, 'NOSESRY', 'Ford', 'Windstar', 'Rojo', 76, 1);
+(42, 'NOSESRY', 'Ford', 'Windstar', 'Rojo', 76, 1),
+(51, 'LLLLLLL', 'Alfa Romeo', 'Giulietta', 'Amarillo', 69, 1),
+(52, 'LJA4444', 'Aston Martin', 'DBS', 'Azul', 77, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modelos`
+-- Estructura de tabla para la tabla `copilotos`
+--
+
+CREATE TABLE IF NOT EXISTS `copilotos` (
+  `idviaje` int(11) NOT NULL,
+  `idcopiloto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `copilotos`
+--
+
+INSERT INTO `copilotos` (`idviaje`, `idcopiloto`) VALUES
+(10, 77);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `modelos`
 --
 
 CREATE TABLE IF NOT EXISTS `modelos` (
@@ -57,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `modelos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7288 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `modelos`
+-- Volcado de datos para la tabla `modelos`
 --
 
 INSERT INTO `modelos` (`year`, `make`, `model`, `id`) VALUES
@@ -7355,7 +7375,7 @@ INSERT INTO `modelos` (`year`, `make`, `model`, `id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ruta`
+-- Estructura de tabla para la tabla `ruta`
 --
 
 CREATE TABLE IF NOT EXISTS `ruta` (
@@ -7366,20 +7386,24 @@ CREATE TABLE IF NOT EXISTS `ruta` (
   `idusuario` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1',
   `nombre` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ruta`
+-- Volcado de datos para la tabla `ruta`
 --
 
 INSERT INTO `ruta` (`id`, `origen`, `destino`, `camino`, `idusuario`, `activo`, `nombre`) VALUES
 (13, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Colinas del Cimatario. Santiago de QuerÃ©taro, Qro., Mexico', '}vx|BleycRh@r@zCdDXv@@h@UdCUdBY~A}AtHa@z@WTWNk@LuAJkABwFNiKh@kDVOGY?e@@mEZcA@MKWg@nAaGJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAFyJPuNZs[J{CToCVoBL{@`@kBv@wCj@cB~@{BlAcC`A_BfBeCb@q@pCsDtBuC|DuFjFsH`C_DbAiA~A_B~DsCz@g@xAu@nBs@hA_@dBk@|FsA|LqC~Co@tCo@d@OZQlBgAh@c@jAgArAuAnCoCdCgCdB{AfBuAv@s@~@eApBcCxGeHbBgBjBqB|FcGpGwGp@aAvAoCZo@j@_Ad@e@`@WTMh@Sx@S`BUzAQ~AU~C}@zCaAnCeAxBm@~CUzOc@tBOtASdC]`Gq@lJ_A~ASn@InBg@zPmFb@O\\?ZEhBa@TGvBnH\\~Ap@rEDXDTHDH@lCc@pB_@d@Ep@@^Fd@NtEhDXVf@f@LRXr@b@bBf@nAj@lA^p@vAdC^xAfDlPwElAgBb@w@RFXt@SjClM', 76, 1, 'Mi casa - Tec'),
-(14, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', 'ixx|BjcycRp@hAxDjELPPj@@b@A^Kt@g@fEaBbI]hAY`@UPg@P{@JuAF{ELoBFiBH@\\|CKrGQpCORzC?J', 76, 0, 'tec-cadadiana');
+(14, 'Itesmq. Santiago de QuerÃ©taro, Qro., Mexico', 'Los Girasoles. Santiago de QuerÃ©taro, Qro., Mexico', 'ixx|BjcycRp@hAxDjELPPj@@b@A^Kt@g@fEaBbI]hAY`@UPg@P{@JuAF{ELoBFiBH@\\|CKrGQpCORzC?J', 76, 0, 'tec-cadadiana'),
+(15, 'San Pablo. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'Industria del Hierro. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'ghy|BdszcRf@fGA~B@dAyCA_AQcAQ@_CCaCG?kCy@EMCeCAEKCsA?yDGeDQwAKLo@JmADMPu@^{A^kBj@aCBy@NgAVaBBo@`DaOl@mC^kBT}ANoANoCD_F@m@H]D]HoAHeCF]FO@]@eA@cDDyCF_G@_CXk@RQ\\OnACfDEbA?xFG`@Eh@]T]A{AbAA', 69, 0, 'Bye'),
+(16, 'Claustros del Parque. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'Soriana. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'k{x|B|nvcROkAgATo@JAFj@`DDPh@r@j@j@L^L~@WJi@HE]GYeAoA_@k@UcAYiBUG]EQ@|@tE`@dBd@bFB\\DrAAxBCxAFvDPrFFbABx@IbCSdECpAD|@j@xFBn@O`CXj@lCdHVj@p@hAxDjELPPj@@b@A^Kt@g@fEaBbI]hAY`@UPg@P{@JuAFcA[i@[}@o@MMGa@Ec@y@eBOUQ_@Y]TqAV}AASCQhBo@DABG', 69, 2, 'Oli'),
+(17, 'Soriana. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'Itesmq. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'yly|BrhzcRyEVyBPOG_A@mEZcA@UUO]^eBn@{Cf@yBhBoI`A_Ft@sDF[TAPCf@UZOd@_@d@u@h@mATi@PUZ[v@]XEhAA', 77, 2, 'Prueba1'),
+(18, 'San Pablo. Santiago de QuerÃ©taro, Qro., MÃ©xico', 'Plaza del Parque. Santiago de QuerÃ©taro, Qro., MÃ©xico', '}iy|Bra{cReACyBa@BkEEu@C?KC}Bq@GEGmCCKk@AqEGkDMkBOLo@Bc@Js@FYZiAnAaGJ]By@ZuBJs@Bo@xDgQt@sDZyBT}CFyAByEJi@PcCBiAFo@HW@_BDcFDcDFuGJiFD_G@Uz@J\\BdBPd@FZHjBdAb@T', 77, 2, 'Prueba2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -7389,10 +7413,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `password` text NOT NULL,
   `id` int(11) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`nombre`, `apellido`, `mail`, `password`, `id`, `activo`) VALUES
@@ -7411,119 +7435,141 @@ INSERT INTO `usuarios` (`nombre`, `apellido`, `mail`, `password`, `id`, `activo`
 ('Test', 'Testa', 'testa@testa.com', 'ff7fc2db73c5b414f626f19b44d982e2', 73, 1),
 ('Raul', 'Mar', 'a', '1', 74, 1),
 ('hgjfhkfjghf', 'jhgdfjhjgfd', 'aaa@abc.com', 'fc87a1b9db066b9e84762e7f85019c1e', 75, 1),
-('Raa', 'Maa', 'rm@hotmail.com', '24e8f1e8ec29580839989ef740a3851b', 76, 1);
+('Raa', 'Maa', 'rm@hotmail.com', '24e8f1e8ec29580839989ef740a3851b', 76, 1),
+('Mengana', 'La Banana', 'A01204321@itesm.mx', 'e4c0b1a6518bc2ba1769da557469bf4a', 77, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `viaje`
+-- Estructura de tabla para la tabla `viaje`
 --
 
 CREATE TABLE IF NOT EXISTS `viaje` (
   `id` int(11) NOT NULL,
-  `cal_conductor` int(11) NOT NULL,
-  `cal_copiloto` int(11) NOT NULL,
   `origen` text NOT NULL,
   `idruta` int(11) NOT NULL,
   `idconductor` int(11) NOT NULL,
   `idauto` int(11) NOT NULL,
-  `idcopiloto` int(11) NOT NULL,
-  `tiempo` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `capacidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `capacidad` int(11) NOT NULL,
+  `hora` time NOT NULL,
+  `fecha` date NOT NULL,
+  `activo` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Volcado de datos para la tabla `viaje`
+--
+
+INSERT INTO `viaje` (`id`, `origen`, `idruta`, `idconductor`, `idauto`, `capacidad`, `hora`, `fecha`, `activo`) VALUES
+(10, 'Claustros del Parque. Santiago de QuerÃ©taro, Qro., MÃ©xico', 16, 69, 51, 4, '05:00:00', '2015-11-06', 1),
+(11, 'Soriana. Santiago de QuerÃ©taro, Qro., MÃ©xico', 17, 77, 52, 2, '01:01:00', '2015-11-04', 1),
+(12, 'San Pablo. Santiago de QuerÃ©taro, Qro., MÃ©xico', 18, 77, 52, 4, '01:01:00', '2015-11-06', 1);
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `auto`
+-- Indices de la tabla `auto`
 --
 ALTER TABLE `auto`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idusuario` (`idusuario`);
 
 --
--- Indexes for table `modelos`
+-- Indices de la tabla `copilotos`
+--
+ALTER TABLE `copilotos`
+  ADD PRIMARY KEY (`idviaje`),
+  ADD KEY `idviaje` (`idviaje`),
+  ADD KEY `idcopiloto` (`idcopiloto`);
+
+--
+-- Indices de la tabla `modelos`
 --
 ALTER TABLE `modelos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ruta`
+-- Indices de la tabla `ruta`
 --
 ALTER TABLE `ruta`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idusuario` (`idusuario`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `viaje`
+-- Indices de la tabla `viaje`
 --
 ALTER TABLE `viaje`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idruta` (`idruta`),
   ADD KEY `idusuario` (`idconductor`),
-  ADD KEY `idauto` (`idauto`),
-  ADD KEY `idcopiloto` (`idcopiloto`);
+  ADD KEY `idauto` (`idauto`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `auto`
+-- AUTO_INCREMENT de la tabla `auto`
 --
 ALTER TABLE `auto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
--- AUTO_INCREMENT for table `modelos`
+-- AUTO_INCREMENT de la tabla `modelos`
 --
 ALTER TABLE `modelos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7288;
 --
--- AUTO_INCREMENT for table `ruta`
+-- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
 --
--- AUTO_INCREMENT for table `viaje`
+-- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `auto`
+-- Filtros para la tabla `auto`
 --
 ALTER TABLE `auto`
   ADD CONSTRAINT `auto_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `ruta`
+-- Filtros para la tabla `copilotos`
+--
+ALTER TABLE `copilotos`
+  ADD CONSTRAINT `copilotos_ibfk_1` FOREIGN KEY (`idviaje`) REFERENCES `viaje` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `copilotos_ibfk_2` FOREIGN KEY (`idcopiloto`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `ruta`
 --
 ALTER TABLE `ruta`
   ADD CONSTRAINT `ruta_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `viaje`
+-- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
   ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`idauto`) REFERENCES `auto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`idconductor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`idcopiloto`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `viaje_ibfk_4` FOREIGN KEY (`idruta`) REFERENCES `ruta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
