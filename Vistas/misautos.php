@@ -40,6 +40,26 @@
 
 	<table class="table-hover col-xs-8 col-sm-8 col-md-8 text-center" id="tabledance"></table>
 
+	<!-- Modal -->
+	<!-- <div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	     Modal content-->
+	    <!-- <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title"></h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Seguro que quieres borrar el auto?</p>
+	      </div>
+	      <div class="modal-footer"> -->
+					<!-- <button type='button' class='btn btn-default' data-dismiss='modal' onclick="deleteCar()">Si</button>
+					<button type='button' class='btn btn-default' data-dismiss='modal'>No</button> -->
+	      <!-- </div>
+	    </div>
+	  </div>
+	</div> -->
 
 
 	<div class="col-md-2 col-md-offset-6" style="padding-top: 3%;">
@@ -58,6 +78,10 @@
 			}
 		});
 	}
+
+
+
+
 </script>
 
 

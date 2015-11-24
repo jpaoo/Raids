@@ -79,7 +79,9 @@ if($routeList==NULL){
 					<div id=\"map".$i."\"></div>
 					</br>
 					<button name=\"modificar\" class=\"btn-info\" onclick=\"sendRouteId(this)\" value=\"". $routeList[$i]['id'] ."\">Modificar</button>
+
 					<button onclick=\"createTrip(this)\" type=\"button\" class=\"btn-warning\" data-toggle=\"modal\" data-target=\"#modal\">Activar</button>
+
 					<button class=\"btn-danger\" onclick=\"deleteRoute(this)\" >Eliminar</button>
 
 
@@ -123,6 +125,7 @@ if($routeList==NULL){
 
 	<div id="modal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
+
 				<div class="modal-content">
 				  <div class="modal-header">
 				<h4 class="modal-title">Nuevo Viaje</h4>
@@ -137,11 +140,11 @@ if($routeList==NULL){
 					  	<label>Selecciona tu Auto: </label>
 					  	
 									
-									<select name="autos" id="selectAuto">
+
+									<select name="autos">
 									<?php
 										include("../Controladores/crearViaje.php"); 
-										for($i=0;$i<sizeof($cars)-1;$i++){
-										
+										for($i=0;i<sizeof($cars);$i++){
 									  	echo "<option value=\"".$cars[$i]['id']."\">".$cars[$i]['placa']." ".$cars[$i]['modelo']."</option>";
 										}
 									?>
@@ -157,6 +160,7 @@ if($routeList==NULL){
 				  </div>
 				  <div class="modal-footer">
 					<button type="button" class="btn btn-default" onclick="isActivated()" data-dismiss="modal">Activar</button>
+
 				  </div>
 				</div>
 
@@ -219,6 +223,7 @@ if($routeList==NULL){
 					window.location.replace("../Vistas/mis_viajes.php");
 
 				});
+
 			}
 
 		<!--MODIFICAR-->
@@ -230,7 +235,6 @@ if($routeList==NULL){
 				$.post("../Controladores/modificarRuta.php",
 					   {
 					idRuta: idRuta
-					
 
 				},
 					   function(data, status){

@@ -480,7 +480,6 @@ function getRoute(){
 
 }
 
-
 function getUserCars(){
 	
 	$id= $_SESSION['idUsuario'];
