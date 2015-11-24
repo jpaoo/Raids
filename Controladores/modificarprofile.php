@@ -9,7 +9,7 @@ function test_input($data) {
  return $data;
 }
 
-$errNombre = $errApellido = $errMail = $errCont1 = $errCont2 = "";
+$errNombre = $errApellido = $errMail = $errCont1 = $errCont2 = $errimg = "";
 $nombre = $apellido = $mail = "";
 $errn = $errors = $errapp = $errpass =  $errorsp = 0;
 

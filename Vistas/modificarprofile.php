@@ -104,6 +104,17 @@
 					<button type="submit" name="submit" class="btn btn-success">Modificar Datos</button>
 				</form>
 
+				<div class="container">
+					<form action="../Controladores/upload.php" method="post" enctype="multipart/form-data">
+						Selecciona una imagen de perfil:
+						<span id="errimg">
+									<font color = "red"><?php echo $errimg ?></font>
+						</span>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="Cambiar foto de perfil" name="submit">
+					</form>
+				</div>
+
 			</div>
 		</div>
 	</div>

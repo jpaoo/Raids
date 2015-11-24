@@ -31,17 +31,11 @@ function connect(){
 $conn = connect();
 
 $id = $_REQUEST['id'];
-echo $id;
+$flag = 0;
 
-
-$sql = "DELETE FROM avientame . auto WHERE auto . id = '$id'";
-if (mysqli_query($conn,$sql)) header('Location:../Vistas/misautos.php');
-// if (deletedAuto()) header('Location:../Vistas/misautos.php');
-// else include('../Vistas/misautos.php');
+	$sql = "UPDATE auto SET activo='0' WHERE id='$id'";
+	if (mysqli_query($conn,$sql)) header('Location:../Vistas/misautos.php');
 
 $conn->close();
-
-
-
 
 ?>

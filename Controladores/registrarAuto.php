@@ -22,10 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
  $plac = $_POST["placa"];
  if( strlen($plac) < 7 ) {
-  $errPlaca = "Códidgo de placas no es valido.";
+  $errPlaca = "Código de placas no es valido.";
   $errors++;
 }
 
+if( preg_match("#\W+#", $plac) ) {
+  $errors++;
+  $errPlaca = "No se aceptan caracteres especiales.";
+}
 
 
 if ($_POST["marca"] == "Selecciona una marca") {
