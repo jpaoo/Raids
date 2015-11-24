@@ -11,6 +11,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 		<style media="screen">
@@ -18,18 +20,21 @@
 	font-family: 'Montserrat', sans-serif;
 			}
 		</style>
+<script>
+
+</script>
 
 </head>
 
-<body onload="maker()">
+<body>
 
-<?php $placa = "";?>
+<?php $placa = "" ?>
 
 	<!-- Navbar top-->
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="../Vistas/misautos.php"><span class="glyphicon glyphicon-arrow-left"> Regresar</span></a>
+				<a class="navbar-brand" href="profile.php"><span class="glyphicon glyphicon-arrow-left"> Regresar a mi perfil</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right"></ul>
@@ -39,7 +44,7 @@
 
 	<!--Logo image -->
 	<div class="text-center">
-		<img src="../Vistas/images/AvientameIconOscuro.png" alt="" class="img-responsive center-block">
+		<img src="../Vistas/images/AvientameIconOscuro.png" alt="logo" class="img-responsive center-block">
 		<br>
 	</div>
 
@@ -48,45 +53,79 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				  <p>(*) Campo obligatorio</p>
+
 				<form method="POST" action="../Controladores/registrarAuto.php">
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="marca">Marca: *
+							<label for="marca">Marca:
 								<span id="errmarca">
 									<font color = "red">	<?php echo $errMarca; ?></font>
 								</span>
 							</label>
+							<select onchange="showMake(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+								<option>Selecciona una marca</option>
 
-							<select onchange="fetch_select(this.value);" class="form-control" id="marca" name = "marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> >
+
+
+
+
+
+								<!-- <option>Acura</option>
+								<option>Audi</option>
+								<option>BMW</option>
+								<option>Buick</option>
+								<option>Cadillac</option>
+								<option>Chevrolet</option>
+								<option>Chrysler</option>
+								<option>Dodge</option>
+								<option>Fiat</option>
+								<option>Ford</option>
+								<option>GMC</option>
+								<option>Honda</option>
+								<option>Hyundai</option>
+								<option>Infiniti</option>
+								<option>Jaguar</option>
+								<option>Jeep</option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option>
+								<option></option> -->
 						 </select>
+							<!-- <input type="text" class="form-control" id="marca" name="marca" value=<?php if (isset($_POST[ "marca"])) echo $_POST[ "marca"] ?> > -->
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="modelo">Modelo: *
+							<label for="modelo">Modelo
 								<span id="errModelo">
 									<font color = "red"><?php echo $errModelo ?></font>
 								</span>
 							</label>
-							<select  id="new_select" class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
+							<select  class="form-control" id="modelo" name = "modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> >
 								<option></option>
+								
 						 </select>
+							<!-- <input type="text" class="form-control" id="modelo" name="modelo" value=<?php if (isset($_POST[ "modelo"])) echo $_POST[ "modelo"] ?> > -->
 						</div>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="placa">Placas: *
+						<label for="placa">Placas:
 							<span id="errPlaca">
 									<font color = "red"><?php echo $errPlaca ?></font>
 							</span>
 						</label>
-						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" onkeyup="upperCase(this)">
+						<input type="text" class="form-control"  maxlength="7" id="placa" name="placa" placeholder="Ej: LMN2345" >
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<label for="color">Color: *
+							<label for="color">Color:
 								<span id="errColor">
 										<font color = "red"><?php echo $errColor ?></font>
 								</span>
@@ -105,6 +144,7 @@
 							 <option>Rojo</option>
 							 <option>Verde</option>
 						 </select>
+							<!-- <input type="" class="form-control" id="pass" name="pass" value=<?php if (isset($_POST[ "pass"])) echo $_POST[ "pass"] ?> > -->
 						</div>
 
 
@@ -119,47 +159,10 @@
 
 
 
-<script type="text/javascript">
-
-	function fetch_select(val) {
-		 $.ajax({
-			 type: 'POST',
-			 url: '../Controladores/fetch_data.php',
-			 data: {
-				 get_option:val
-			 },
-			 success: function (response) {
-				 document.getElementById("new_select").innerHTML=response;
-			 }
-		 });
-
-	}
-
-	function upperCase(t){
-		var eleVal = document.getElementById(t.id);
-  	eleVal.value= eleVal.value.toUpperCase().replace(/ /g,'');
-	}
-
-	function maker() {
-
-		$.ajax({
-			type : 'GET',
-			url : '../Controladores/fetch_make.php',
-			DataType: 'string',
-			success: function (response) {
-			document.getElementById("marca").innerHTML = response;
-			}
-		});
-	}
-
-
-</script>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 
 
 </body>

@@ -78,7 +78,9 @@
 				</div>
 
 			</div>
-			<button type="submit" name="submit" class="btn btn-success">Modificar Contraseña</button>
+			<button type="submit" name="submit" class="btn btn-success">Modificar contraseña</button>
+            <br><br>
+            <a href="profile.php" class="btn btn-primary">Salir sin cambios</a>
 		</form>
 	</div>
 

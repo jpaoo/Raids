@@ -9,6 +9,8 @@
   	<link href="css/custom_css_main_page.css" rel="stylesheet">
   	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     	<style media="screen">
     		*{
@@ -22,17 +24,17 @@
 
 	<?php include_once("../Modelo/util.php"); ?>
 
-	<div class="text-center col-xs-8 col-sm-9 col-md-9">
+	<div class="text-center col-xs-8 col-sm-8 col-md-8">
 		<h1><?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['nom']. " ". $_SESSION['app']; ?></h1>
-		<hr>	
+		<hr>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-7">
+			<div class="col-md-4 col-md-offset-6">
 				<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
 			</div>
 		</div>
-	</div>	
+	</div>
 	</div>
 
 
@@ -43,7 +45,6 @@
 
 		<div class="stars col-md-9 col-sm-9"></div>
 		</br>
-
 		</div>
 
 

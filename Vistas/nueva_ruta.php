@@ -9,11 +9,16 @@
 	<!--Custom CSS-->
 	<link href="css/custom_css_main_page.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	
 	<style type="text/css">
 		#map {
 			margin: auto;
 			height: 20em;
 			width: 100%;
+		}
+
+		*{
+	font-family: 'Montserrat', sans-serif;
 		}
 
 	</style>
@@ -39,7 +44,7 @@
 	<div class="row col-xs-8 col-sm-8 col-md-8 text-center">
 
 		Nombre de la ruta: <input type="text" type="text" id="routeName" placeholder="ex. Mi casa a la escuela" />
-				
+
 	</div>
 	<div class="row col-xs-8 col-sm-8 col-md-8 text-center">
 	<br>
@@ -70,16 +75,16 @@
 		var clicks=1;
 		var routePath;
 		var encodedRoute;
-		var start;
-		var end;
+		var start = null;
+		var end = null;
 		var startAdress, endAdress;
-		
+
 		function initMap() {
 			var directionsService = new google.maps.DirectionsService;
 			var directionsDisplay = new google.maps.DirectionsRenderer;
-			
+
 			var geocoder = new google.maps.Geocoder();
-			
+
 			var locationplz = {lat: 20.612888, lng: -100.404657};
 
 			var map = new google.maps.Map(document.getElementById('map'), {
@@ -94,7 +99,7 @@
 			var onChangeHandler = function() {
 				calculateAndDisplayRoute(directionsService, directionsDisplay);
 			};
-			
+
 			//document.getElementById('start').addEventListener('change', onChangeHandler);
 		//	document.getElementById('end').addEventListener('change', onChangeHandler);
 
@@ -114,12 +119,12 @@
 				if(clicks%2!=0){
 
 					if(clicks>2){
-						start.setMap(null);	
+						start.setMap(null);
 					}
 
 					start = new google.maps.Marker({
 						draggable:false,
-						position: location, 
+						position: location,
 						map: map,
 						animation: google.maps.Animation.DROP
 					});
@@ -129,12 +134,12 @@
 				}else{
 
 					if(clicks>2){
-						end.setMap(null);	
+						end.setMap(null);
 					}
 
 					end = new google.maps.Marker({
 						draggable:false,
-						position: location, 
+						position: location,
 						map: map,
 						animation: google.maps.Animation.DROP
 					});
@@ -158,7 +163,7 @@
 
 
 						if(clicks>3){
-							routePath.setMap(null);	
+							routePath.setMap(null);
 						}
 
 						routePath = new google.maps.Polyline({
@@ -176,7 +181,7 @@
 						encodedRoute = google.maps.geometry.encoding.encodePath(pathAlone);
 
 						encodedRoute = encodedRoute.replace(/\\/g,"\\\\");
-						
+
 
 					} else {
 						window.alert('Directions request failed due to ' + status);
@@ -184,15 +189,15 @@
 				});
 			}
 
-			
+
 
 			function geocodeStartEnd(startPoint, endPoint){
-				
+
 
 				geocoder.geocode({'location': startPoint},function(results, status) {
-					
+
 					if (status === google.maps.GeocoderStatus.OK) {
-						
+
 						if (results[1]) {
 
 							startAdress=results[1].formatted_address;
@@ -200,7 +205,7 @@
 
 
 						} else {
-							
+
 							startAdress="unknown";
 						}
 					} else {
@@ -231,7 +236,7 @@
 		function sendRoute(){
 
 
-			
+
 			$.post("../Controladores/routeHandler.php",
 				   {
 				encodedRoute: encodedRoute,
@@ -242,7 +247,7 @@
 				function(data, status){
 				window.location.replace("../Vistas/mis_rutas.php");
 
-			});	
+			});
 
 		}
 
