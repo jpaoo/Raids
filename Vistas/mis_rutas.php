@@ -54,7 +54,7 @@ for($i=0;$i<sizeof($routeList);$i++){
 include("../Controladores/routeHandler.php");
 
 
-if($routeList==NULL){
+if(sizeof($routeList)==0){
 	echo '<p class="text-center">No tienes rutas guardadas</p>';
 }else{
 	echo '<table class="table table-hover report">
@@ -152,7 +152,7 @@ if($routeList==NULL){
    										
  						<br><br>
 					  	
-						<label>Capacidad: </label><input type="number" id="routeCapacity"><br>
+						<label>Capacidad: </label><input type="number" id="routeCapacity" min="1"><br>
 					
 					</form>
 					

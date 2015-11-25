@@ -10,21 +10,21 @@ function sesdest() {
 function connect(){
 
 
-	$servername = "localhost";
+	/*$servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "avientame";
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	*/
 
-
-	/*$servername = "localhost";
+	$servername = "localhost";
     $username = "jp_ao";
     $password = "";
     $database = "avientame";
     $dbport = 3306;
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $database, $dbport);*/
+    $conn = new mysqli($servername, $username, $password, $database, $dbport);
 
 
 	if ($conn->connect_error) {
@@ -565,13 +565,13 @@ function agregarCopiloto($idViaje){
 	
 	if($cupo>0){
 		$sql= "INSERT INTO copilotos(idcopiloto,idviaje) VALUES ('$idUsuario','$idViaje')";
-		$cupo --;
+		$cupo = $cupo -1;
 		mysqli_query($conn, $sql);
 		
 		if($cupo==0){
-			$activo=1;
+			$activo=0;
 		}else{
-			$activo=2;	
+			$activo=1;	
 		}
 		
 		$sql = "UPDATE viaje SET capacidad='$cupo',activo='$activo' WHERE id='$idViaje'";
@@ -605,14 +605,21 @@ function getUserActiveRoutes(){
 	$sql = "SELECT idviaje FROM copilotos WHERE idcopiloto!='$idUsuario'";
 	$result = mysqli_query($conn,$sql);
 	
-	for($i=0;$i<sizeof($result)-1;$i++){
+	for($i=0;$i<=sizeof($result)-1;$i++){
 		
-		$temp = $result[$i];
-		if($i==0){$sql = "SELECT * FROM viaje WHERE id='$temp'";}else{
-		$sql .= " UNION SELECT * FROM viaje WHERE id='$temp'";}
-	}
+		$temp = mysqli_fetch_array($result);
 	
-
+		if($i==0){
+			
+			$sql = "SELECT * FROM viaje WHERE id='$temp[0]' AND activo='1'";
+			
+		}else{
+			
+			$sql .= " UNION SELECT * FROM viaje WHERE id='$temp[0]' AND activo='1'";
+			
+			
+		}
+	}
 	
 	$result = mysqli_query($conn,$sql);
 	
@@ -621,7 +628,7 @@ function getUserActiveRoutes(){
 	{
 		while($idViajes[] = mysqli_fetch_array($result));
 		$conn->close();
-		return $cosas;
+		return $idViajes;
 	}else{
 		$conn->close();
 		return NULL;

@@ -25,7 +25,7 @@ if(isset($_POST["submit"])) {
         $uploadOk = 1;
     } else {
 		$errimg = "File is not an image.";
-		header("Location: ../Controladores/modificarProfile.php");
+		header("Location: ../Controladores/modificarprofile.php");
         $uploadOk = 0;
     }
 }
@@ -57,7 +57,7 @@ if ($uploadOk == 0) {
 
     } else {
         $errimg = "Hubo un error al modificar tu foto de perfil.";
-        include("../Controladores/modificarProfile.php");
+        include("../Controladores/modificarprofile.php");
     }
 }
 ?>

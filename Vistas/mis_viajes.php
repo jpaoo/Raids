@@ -64,10 +64,11 @@
 	<?php
 				include("../Controladores/misViajesController.php"); 
 
-				if($myRoutes==NULL){
+				if(sizeof($myRoutes)==0){
+					var_dump($myRoutes);
 				
 					echo "No tienes rutas activas.";	
-					}else{
+				}else{
 
 						echo '<table class="table table-hover report">
 					<tr>
@@ -77,7 +78,7 @@
 						<th class="text-center">LUGARES DISPONIBLES</th>
 					</tr>';
 
-							for($i=0;$i<sizeof($possibleRoutes)-1;$i++){
+							for($i=0;$i<=sizeof($possibleRoutes);$i++){
 								echo
 
 									"<tr>

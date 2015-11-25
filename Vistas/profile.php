@@ -33,7 +33,7 @@
 		<h2>Apellido: <?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['app']; ?></h2>
 		<h2>Correo: <?php if(session_status() == PHP_SESSION_NONE) {session_start();} getname($_SESSION['mail']); echo $_SESSION['mail'];?></h2>
 		<hr>
-		<a href="../Controladores/modificarProfile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
+		<a href="../Controladores/modificarprofile.php"><button type="button" class="btn btn-warning">Modificar Perfil</button></a>
 		<a href="misautos.php"><button type="button" class="btn btn-warning">Mis autos.</button></a>
 		<br>
 		<br>
